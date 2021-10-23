@@ -19,6 +19,11 @@ nav {
     height: 5rem;
 }
 
-.search-box .btn {
+.search-box {
     color: #005C5C;
+    outline: none;
+}
+
+#main-info-bar p {
+    color: white;
 }
