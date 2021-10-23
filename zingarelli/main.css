@@ -1,0 +1,33 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+nav {
+    background-color: #007373;
+}
+
+.navbar-nav a {
+    font-weight: 700;
+    color: white;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+#nav-logo {
+    height: 5rem;
+}
+
+.search-box {
+    color: #005C5C;
+    outline: none;
+}
+
+.search-box .btn {
+    background-color: #005C5C !important;
+}
+
+.search-box .btn:hover {
+    background-color: #005C5C !important;
+}
