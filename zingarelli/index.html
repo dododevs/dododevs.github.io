@@ -10,8 +10,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
 	<title>Zingarelli Test</title>
 </head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark flex-column pb-0 fixed-top">
+<body class="d-flex flex-column h-100">
+	<nav class="navbar navbar-expand-lg navbar-dark flex-column pb-0">
 		<div class="container-fluid pb-2">
 			<div class="navbar-brand">
 				<img id="nav-logo" src="static/img/logo.png" class="d-none d-md-block">
@@ -67,13 +67,24 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid w-100 p-0 mt-5">
-		<img src="static/img/fronte.jpg" class="img-fluid w-100 d-none d-md-block">
-		<img src="static/img/verticale.jpg" class="img-fluid w-100 d-md-none d-block">
+	<div class="container-fluid w-100 p-0 flex-grow-1">
+		<img src="static/img/fronte.jpg" class="w-100 h-100 d-none d-md-block">
+		<img src="static/img/verticale.jpg" class="w-100 h-100 d-md-none d-block">
+		<form class="search-box d-flex d-none d-md-flex w-40" id="main-search-box">
+			<input class="form-control rounded mx-auto text-center" type="search" placeholder="Cosa stai cercando?" aria-label="Cerca nel sito" maxlength="16">
+		</form>
+
+		<div class="container pt-5">
+			<h1 class="mt-5 f-700 ms-md-0 ms-3">In primo piano</h1>
+			<div id="news-container">
+				<news-article v-for="news in feed" :news="news">
+			</div>
+		</div>
 	</div>
 
 	<script src="static/js/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"></script>
 	<script src="static/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
 	<script src="static/js/vue.min.js" integrity="sha384-ULpZhk1pvhc/UK5ktA9kwb2guy9ovNSTyxPNHANnA35YjBQgdwI+AhLkixDvdlw4"></script>
+	<script src="static/js/main.js"></script>
 </body>
 </html>
