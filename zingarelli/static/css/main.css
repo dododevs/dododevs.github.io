@@ -16,7 +16,13 @@ nav {
 }
 
 #nav-logo {
-    height: 5rem;
+    height: 3rem;
+}
+
+@media (min-width: 768px) {
+    #nav-logo {
+        height: 5rem;
+    }
 }
 
 .search-box {
