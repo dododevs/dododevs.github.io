@@ -27,24 +27,6 @@
 						<li class="nav-item d-none">
               <a class="nav-link" href="#main-header">Link</a>
             </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame1">Link</a>
-            </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame2">Link</a>
-            </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame3">Link</a>
-            </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame4">Link</a>
-            </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame5">Link</a>
-            </li>
-						<li class="nav-item d-none">
-              <a class="nav-link" href="#frame6">Link</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -59,33 +41,15 @@
 		<div class="spacer"></div>
 		<div class="container-fluid d-flex flew-row overflow-auto" id="history">
 			<h1 class="display-4 my-auto p-4 text-center">La nostra storia</h1>
-			<object class="ms-3" id="film-strip" data="static/img/film_strip_horizontal.svg" type="image/svg+xml"></object>
+			<object class="ms-3" id="film-strip" data="static/img/film_strip_horizontal_with_frames.svg" type="image/svg+xml"></object>
 		</div>
-    <!-- <div class="container d-flex flex-row mt-5 text-center" id="history">
-			<object id="film-strip" data="static/img/film_strip_with_frames.svg" type="image/svg+xml"></object>
-			<div class="d-flex flex-column justify-content-between" id="film-strip-tracker">
-				<div class="film-strip-frame" id="frame1">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame2">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame3">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame4">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame5">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame6">
-					&nbsp;
-				</div>
-				<div class="film-strip-frame" id="frame7">
-				</div>
-			</div>
-		</div> -->
+		<div class="container-fluid d-flex flew-row overflow-hidden" id="history-description">
+			<!-- <div class="vl mx-5"></div> -->
+			<p class="d-none d-md-block h3 p-5" id="description-frame1">Era il 1938 quando Luigi innaugurava uno dei primi negozi di fotografia della citt&agrave;, un evento per quei tempi, quando una macchina fotografica suscitava ancora curiosit&agrave;; un attrezzo strano in grado di fissare dei momenti per sempre.</p>
+			<p class="d-block d-md-none" id="description-frame1">Era il 1938 quando Luigi innaugurava uno dei primi negozi di fotografia della citt&agrave;, un evento per quei tempi, quando una macchina fotografica suscitava ancora curiosit&agrave;; un attrezzo strano in grado di fissare dei momenti per sempre.</p>
+			<p class="d-none h3" id="description-frame2">Fare il fotografo in quegli anni era una responsabilit&agrave; e richiedeva grande abilit&agrave; per ottenere dei bellissimi ricordi che non sbiadissero nel tempo. Esperienza, tecnica e passione, tanta passione racchiuse in un uomo di rara umanit&agrave;: Luigi.</p>
+			<p class="d-block d-md-none" id="description-frame2">Fare il fotografo in quegli anni era una responsabilit&agrave; e richiedeva grande abilit&agrave; per ottenere dei bellissimi ricordi che non sbiadissero nel tempo. Esperienza, tecnica e passione, tanta passione racchiuse in un uomo di rara umanit&agrave;: Luigi.</p>
+		</div>
 		<div class="spacer">
 		</div>
 		<div class="spacer">
@@ -93,28 +57,6 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script>
-      $(window).on('activate.bs.scrollspy', function (evt) {
-        let target = evt.relatedTarget;
-				console.log(evt);
-				if (target === '#main-header') {
-					$('body').stop().animate({
-						// backgroundColor: '#CD5334'
-						backgroundColor: '#F8F4A6'
-						// backgroundColor: '#C03231'
-					}, 500);
-				} else if (target === '#top') {
-					$('body').stop().animate({
-						backgroundColor: '#000'
-					}, 500);
-				} else if (target.includes('frame')) {
-					console.log(target);
-					$(document.getElementById('film-strip').contentWindow.document)
-						.find(`#roll-${target.substring(1)}`)
-						.toggleClass('negtopos')
-						.toggleClass('postoneg');
-				}
-      });
-    </script>
+    <script src="static/js/main.js"></script>
   </body>
 </html>
