@@ -34,18 +34,52 @@ body {
 
 	78% { filter: brightness(1); }
 	79% { filter: brightness(0.5); }
-	80% { filter: brightness(1); }
+	85% { filter: brightness(1); }
+
+	87% { filter: brightness(0.5); }
+	88% { filter: brightness(1); }
 }
 
-.main-container {
+#top {
 	font-family: 'Rubik', sans-serif;
 	color: white;
 }
 
-.main-container .display-4 {
+.display-4 {
 	font-weight: 500;
 }
 
-.under-main {
-	height: 128rem;
+#history {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+#history::-webkit-scrollbar {
+	width: 0px;
+}
+
+#history #film-strip {
+	height: 32rem;
+}
+
+.vl {
+	float: left;
+	padding: 1rem 1rem 1rem 1rem;
+	border-radius: 4px;
+}
+
+#history .vl {
+	height: 100%;
+	width: 50%;
+	background-color: #542517;
+}
+
+.spacer {
+	height: 16rem;
+}
+
+#film-strip-tracker {
+	float: left;
+	height: 100%;
+	padding-top: 6rem;
 }

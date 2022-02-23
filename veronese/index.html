@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
-  </head>
+  
+	</head>
   <body data-bs-spy="scroll" data-bs-offset="0">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
@@ -23,43 +24,95 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#top">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#under">Link</a>
-            </li>
 						<li class="nav-item d-none">
               <a class="nav-link" href="#main-header">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame1">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame2">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame3">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame4">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame5">Link</a>
+            </li>
+						<li class="nav-item d-none">
+              <a class="nav-link" href="#frame6">Link</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container-fluid main-container text-center py-5 px-3" id="top">
+    <div class="container-fluid text-center py-5 px-3" id="top">
       <img id="big-logo" class="img-fluid p-5 d-none d-md-block" src="static/img/logo_big_no_bg.png">
-      <img id="small-logo-icon" class="img-fluid px-5 d-md-none" src="static/img/logo_small.jpg">
-      <img id="small-logo-brand" class="img-fluid p-2 d-md-none" src="static/img/logo_name.jpg">
+      <img id="small-logo-icon" class="img-fluid px-5 d-md-none" src="static/img/logo_small_no_bg.png">
+      <img id="small-logo-brand" class="img-fluid p-2 d-md-none" src="static/img/logo_name_no_bg.png">
       <h1 class="display-4 mt-5" id="main-header">Fotografi a Bolzano</h1>
       <p class="h1">Dal 1938</p>
     </div>
-    <div class="container" id="history-container">
-    
+		<div class="spacer"></div>
+		<div class="container-fluid d-flex flew-row overflow-auto" id="history">
+			<h1 class="display-4 my-auto p-4 text-center">La nostra storia</h1>
+			<object class="ms-3" id="film-strip" data="static/img/film_strip_horizontal.svg" type="image/svg+xml"></object>
 		</div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script>
+    <!-- <div class="container d-flex flex-row mt-5 text-center" id="history">
+			<object id="film-strip" data="static/img/film_strip_with_frames.svg" type="image/svg+xml"></object>
+			<div class="d-flex flex-column justify-content-between" id="film-strip-tracker">
+				<div class="film-strip-frame" id="frame1">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame2">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame3">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame4">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame5">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame6">
+					&nbsp;
+				</div>
+				<div class="film-strip-frame" id="frame7">
+				</div>
+			</div>
+		</div> -->
+		<div class="spacer">
+		</div>
+		<div class="spacer">
+		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
       $(window).on('activate.bs.scrollspy', function (evt) {
         let target = evt.relatedTarget;
+				console.log(evt);
 				if (target === '#main-header') {
-					console.log('switching to brown');
 					$('body').stop().animate({
-						backgroundColor: '#DAB785'
+						// backgroundColor: '#CD5334'
+						backgroundColor: '#F8F4A6'
+						// backgroundColor: '#C03231'
 					}, 500);
 				} else if (target === '#top') {
-					console.log('switching to black');
 					$('body').stop().animate({
 						backgroundColor: '#000'
 					}, 500);
+				} else if (target.includes('frame')) {
+					console.log(target);
+					$(document.getElementById('film-strip').contentWindow.document)
+						.find(`#roll-${target.substring(1)}`)
+						.toggleClass('negtopos')
+						.toggleClass('postoneg');
 				}
       });
     </script>
