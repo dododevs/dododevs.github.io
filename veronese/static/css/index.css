@@ -1,0 +1,51 @@
+body {
+	position: relative;
+	background-color: black;
+}
+
+#big-logo {
+	animation-name: logo-blink;
+	animation-duration: 6s;
+	animation-timing-function: steps(1, end);
+	animation-iteration-count: infinite;
+}
+
+#small-logo-brand {
+	animation-name: logo-blink;
+	animation-duration: 8s;
+	animation-timing-function: steps(1, end);
+	animation-iteration-count: infinite;
+}
+
+@keyframes logo-blink {
+	0%   { filter: brightness(1); }
+
+	8% { filter: brightness(1); }
+	9%   { filter: brightness(0.5); }
+	10%   { filter: brightness(1); }
+
+	48% { filter: brightness(1); }
+	49% { filter: brightness(0.5); }
+	50% { filter: brightness(1); }
+
+	58% { filter: brightness(1); }
+	59% { filter: brightness(0.5); }
+	60% { filter: brightness(1); }
+
+	78% { filter: brightness(1); }
+	79% { filter: brightness(0.5); }
+	80% { filter: brightness(1); }
+}
+
+.main-container {
+	font-family: 'Rubik', sans-serif;
+	color: white;
+}
+
+.main-container .display-4 {
+	font-weight: 500;
+}
+
+.under-main {
+	height: 128rem;
+}
