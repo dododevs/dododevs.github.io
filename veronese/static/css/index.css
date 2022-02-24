@@ -62,6 +62,17 @@ body {
 	height: 25rem;
 }
 
+#history p {
+	font-size: 2rem;
+	line-height: 1.2;
+}
+
+#history .number {
+	color: #d77e00;
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
 .vl {
 	float: left;
 	padding: 0.5rem;
@@ -74,6 +85,21 @@ body {
 
 #history-description p {
 	font-weight: 500;
+}
+
+#history-description p {
+	position: absolute;
+	transition: opacity 300ms, transform 300ms; 
+}
+
+#history-description p.inactive {
+	opacity: 0;
+	transform: translateY(1rem);
+}
+
+#history-description p.active {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .spacer {
