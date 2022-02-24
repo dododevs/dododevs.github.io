@@ -84,10 +84,7 @@ body {
 }
 
 #history-description p {
-	font-weight: 500;
-}
-
-#history-description p {
+	font-weight: 300;
 	position: absolute;
 	transition: opacity 300ms, transform 300ms; 
 }
@@ -119,6 +116,12 @@ body {
 @media (min-width: 768px) {
 	#history #film-strip {
 		height: 32rem;
+	}
+
+	#history-description p {
+		font-weight: 500;
+		position: absolute;
+		transition: opacity 300ms, transform 300ms; 
 	}
 }
 
