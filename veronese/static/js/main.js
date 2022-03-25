@@ -42,6 +42,10 @@ window.onload = function() {
 			}
 		}
 	});
+
+	$('.number#service-years').text(
+		(new Date().getFullYear() - 1938).toString()
+	);
 	
 	$(window).on('activate.bs.scrollspy', function (evt) {
 		let target = evt.relatedTarget;
