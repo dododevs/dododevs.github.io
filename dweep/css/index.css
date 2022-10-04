@@ -1,0 +1,24 @@
+body {
+    /* background-color: #F78048; */
+    background-color: #F8F4F9;
+    /* background-color: #3E469B; */
+}
+
+#dweep-logo {
+    filter: drop-shadow(1px 4px 2px gray);
+    max-width: 16rem;
+}
+
+.nav-item {
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.nav-item a {
+    color: #F78048;
+}
+
+.nav-item a:hover {
+    color: #3E469B;
+}

@@ -1,0 +1,116 @@
+body {
+	font-family: 'Inconsolata';
+	font-weight: 400;
+	font-size: 1.2rem;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 700;
+}
+
+#full-name {
+	font-size: 3rem;
+	margin: 0;
+}
+
+#full-name-sub {
+	font-style: italic;
+}
+
+.yearspan {
+	color: #C3423F;
+	font-weight: 700;
+}
+
+.entry-title {
+	font-weight: 500;
+	margin: 0;
+}
+
+.entry-subtitle {
+	color: gray;
+	font-size: 1rem;
+}
+
+.timeline-segment-top {
+	height: 100%;
+	border-right: thick solid #C3423F;
+	border-top-right-radius: 4rem;
+	border-top-left-radius: 4rem;
+	float: left;
+}
+
+.timeline-segment-bottom {
+	height: 75%;
+	border-right: thick solid #C3423F;
+	border-bottom-right-radius: 4rem;
+	border-bottom-left-radius: 4rem;
+	float: left;
+}
+
+.timeline-segment {
+	height: 100%;
+	border-right: thick solid #C3423F;
+	float: left;
+}
+
+.timeline-dotted {
+	border-right-style: dotted;
+	border-radius: 0;
+}
+
+.sober-link {
+	-moz-transition: color .15s linear;
+  -o-transition: color .15s linear;
+  -webkit-transition: color .15s linear;
+  transition: color .15s linear;
+	text-decoration: none;
+	color: inherit;
+}
+
+.sober-link:hover {
+	color: #C3423F;
+}
+
+.rbtn {
+	color: inherit;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 4rem;
+	text-decoration: none;
+	cursor: pointer;
+	-moz-transition: background-color .15s linear;
+  -o-transition: background-color .15s linear;
+  -webkit-transition: background-color .15s linear;
+  transition: background-color .15s linear;
+}
+
+.rbtn:hover {
+	color: inherit;
+	background-color: #45454545;
+}
+
+@-webkit-keyframes appear {
+    from { opacity: 0; transform: translateY(1rem); }
+      to { opacity: 1; transform: translateY(0); }
+}
+@keyframes appear {
+    from { opacity: 0; transform: translateY(1rem); }
+      to { opacity: 1; transform: translateY(0); }
+}
+
+.en, .it {
+	display: none;
+}
+
+.en:lang(en) {
+	display: block;
+	-webkit-animation: appear .5s;
+    animation: appear .5s;
+}
+
+.it:lang(it) {
+	display: block;
+	-webkit-animation: appear .5s;
+	animation: appear .5s;
+}
