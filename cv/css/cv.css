@@ -2,6 +2,19 @@ body {
 	font-family: 'Inconsolata';
 	font-weight: 400;
 	font-size: 1.2rem;
+	-moz-transition: background-color .25s linear;
+  -o-transition: background-color .25s linear;
+  -webkit-transition: background-color .25s linear;
+  transition: background-color .25s linear;
+}
+
+body.dark, #topbar.dark {
+	background-color: #0C120C;
+	color: #fafafa;
+	-moz-transition: background-color .25s linear;
+  -o-transition: background-color .25s linear;
+  -webkit-transition: background-color .25s linear;
+  transition: background-color .25s linear;
 }
 
 h1, h2, h3, h4, h5 {
@@ -15,6 +28,18 @@ h1, h2, h3, h4, h5 {
 
 #full-name-sub {
 	font-style: italic;
+}
+
+#toolbar-night i {
+	font-size: 1rem;
+}
+
+#topbar {
+	background-color: white;
+	-moz-transition: background-color .25s linear;
+  -o-transition: background-color .25s linear;
+  -webkit-transition: background-color .25s linear;
+  transition: background-color .25s linear;
 }
 
 .yearspan {
