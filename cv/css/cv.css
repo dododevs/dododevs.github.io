@@ -57,6 +57,20 @@ h1, h2, h3, h4, h5 {
 	font-size: 1rem;
 }
 
+.entry-bar.it:lang(it) {
+	display: inline-block!important;
+	color: black;
+	font-size: 1rem;
+	background-color: #C3423F45;
+}
+
+.entry-bar.en:lang(en) {
+	display: inline-block!important;
+	color: black;
+	font-size: 1rem;
+	background-color: #C3423F45;
+}
+
 .timeline-segment-top {
 	height: 100%;
 	border-right: thick solid #C3423F;
@@ -138,10 +152,6 @@ h1, h2, h3, h4, h5 {
 	display: block;
 	-webkit-animation: appear .5s;
 	animation: appear .5s;
-}
-
-#lang-skills-container {
-	margin-top: 10rem;
 }
 
 #lang-skills-section.it:lang(it) {
