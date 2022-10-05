@@ -139,3 +139,27 @@ h1, h2, h3, h4, h5 {
 	-webkit-animation: appear .5s;
 	animation: appear .5s;
 }
+
+#lang-skills-container {
+	margin-top: 10rem;
+}
+
+#lang-skills-section.it:lang(it) {
+	display: inline-block;
+	color: #C3423F;
+	font-weight: 700;
+	font-stretch: condensed;
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	rotate: 180deg;
+}
+
+#lang-skills-section.en:lang(en) {
+	display: inline-block;
+	color: #C3423F;
+	font-weight: 700;
+	font-stretch: condensed;
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	rotate: 180deg;
+}
