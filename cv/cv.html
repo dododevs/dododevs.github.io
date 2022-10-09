@@ -10,13 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	</head>
   <body>
     <div class="container-fluid p-0">
       <nav id="topbar" class="navbar navbar-expand-md p-0 mt-5 sticky-top">
         <div class="container-fluid">
-          <div class="collapse navbar-collapse row">
+          <div class="row flex-grow-1">
             <div class="col-md-4 d-none d-md-block">
               <div class="d-flex flex-row mt-4 d-inline-block px-4">
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-translate"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i></a>
@@ -24,9 +25,12 @@
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-night"><i class="bi bi-moon align-self-center mx-auto"></i></a>
               </div>
             </div>
-            <div class="col-md-8 col-12 px-3 pt-3 pb-1">
+            <div class="col-md-8 col-10 pt-3 pb-1 px-5 px-md-3">
               <h1 id="full-name">Andrea Esposito</h1>
               <p id="full-name-sub">Developer to be</p>
+            </div>
+            <div class="col-2 col-md-0 d-md-none d-flex flex-row">
+              <a class="rbtn d-flex flex-row me-3 align-self-center" id="toolbar-sm-menu"><i class="bi bi-three-dots-vertical align-self-center mx-auto"></i></a>
             </div>
           </div>
         </div>
@@ -40,8 +44,6 @@
           <p><i class="bi bi-discord"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://discordapp.com/users/9692">revolver<b>#</b>9692</a></p>
         </div>
         <div class="col-md-8 col-12">
-          <h1 id="full-name" class="d-block d-md-none">Andrea Esposito</h1>
-          <p id="full-name-sub" class="d-block d-md-none">Developer to be</p>
           <h3 class="mt-5 mb-3 it">Profilo</h3>
           <h3 class="mt-5 mb-3 en">Profile</h3>
           <p class="it">
@@ -49,8 +51,8 @@
           con <b>Java</b>, mobile con Java + <b>Android SDK</b> e server con <b>Python</b> e <b>Django</b>, rafforzata e messa in pratica durante il
           percorso di studio universitario di <b>informatica pura</b> con indirizzo <b>Software and Systems Engineering</b>, spesso in team con altri studenti.
           Esperienza sul campo acquisita, oltre che attraverso la realizzazione di diversi progetti personali, con lavoro autonomo di 
-          <b>consulenza software</b> a singoli o team e con contributi a progetti <b>open source</b>, di cui attivo fautore come anche 
-          del mondo <b>Linux</b>, di cui entusiastico testimone.
+          <b>consulenza software</b> a singoli o team e con contributi a progetti <b>open source</b>, di cui attivo fautore. Utente <b>Linux</b>, 
+          di cui entusiastico testimone.
           </p>
           <p class="en">
           Computer Science undergraduate with a thing for software development; scientific background and a fair experience with desktop programming, mainly
@@ -98,8 +100,8 @@
               <div class="entry-bar p-1 my-1 it">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
               <div class="entry-bar p-1 my-1 en">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
               <br>
-              <div class="entry-bar p-1 my-1 it">PHP, C, C++, &nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">PHP, C, C++, &nbsp;&nbsp;</div>
+              <div class="entry-bar p-1 my-1 it">PHP, C, C++&nbsp;&nbsp;</div>
+              <div class="entry-bar p-1 my-1 en">PHP, C, C++&nbsp;&nbsp;</div>
             </div>
           </div>
           <div class="row p-0 mt-5" id="other-container">
@@ -111,7 +113,7 @@
               <p class="entry-title en">Musical instruments</p>
               <p class="entry-subtitle en">Classical guitar, drums, piano</p>
               <p class="entry-title it">Progetti hardware</p>
-              <p class="entry-subtitle it">Raspberry Pi, Arduino, ESP32, electronics</p>
+              <p class="entry-subtitle it">Raspberry Pi, Arduino, ESP32, elettronica</p>
               <p class="entry-title en">Hardware projects</p>
               <p class="entry-subtitle en">Raspberry Pi, Arduino, ESP32, electronics</p>
               <p class="entry-title it">Patente di guida</p>
@@ -243,10 +245,68 @@
               <p class="yearspan en">2019</p>
             </div>
           </div>
-        </div>  
+        </div>
+      </div>
+      <div class="container-fluid ps-4 bg-accent d-md-none" id="additional-info-sm">
+        <h3 class="my-5">&nbsp;</h3>
+        <div class="row p-0" id="lang-skills-container">
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. LINGUISTICHE</p>
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">LANG. SKILLS</p>
+          <div class="d-flex flex-column col-10 px-4 mt-2">
+            <p class="entry-title it">Italiano</p>
+            <p class="entry-subtitle it">Lingua madre</p>
+            <p class="entry-title en">Italian</p>
+            <p class="entry-subtitle en">Mothertongue</p>
+            <p class="entry-title it">Inglese</p>
+            <p class="entry-subtitle it">Avanzato &bull; Cambridge C1</p>
+            <p class="entry-title en">English</p>
+            <p class="entry-subtitle en">Advanced &bull; Cambridge C1</p>
+            <p class="entry-title it">Tedesco</p>
+            <p class="entry-subtitle it">Intermedio &bull; B1</p>
+            <p class="entry-title en">German</p>
+            <p class="entry-subtitle en">Intermediate &bull; B1</p>
+          </div>
+        </div>
+        <div class="row p-0 mt-5" id="it-container">
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">IT SKILLS</p>
+          <div class="col-10 px-4 mt-2">
+            <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="entry-bar p-1 my-1 en">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <br>
+            <div class="entry-bar p-1 my-1 it">Python, Django&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="entry-bar p-1 my-1 en">Python, Django&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <br>
+            <div class="entry-bar p-1 my-1 it">Linux: Bash, CLI, RPi&nbsp;&nbsp;</div>
+            <div class="entry-bar p-1 my-1 en">Linux: Bash, CLI, RPi&nbsp;&nbsp;</div>
+            <br>
+            <div class="entry-bar p-1 my-1 it">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="entry-bar p-1 my-1 en">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <br>
+            <div class="entry-bar p-1 my-1 it">PHP, C, C++&nbsp;&nbsp;</div>
+            <div class="entry-bar p-1 my-1 en">PHP, C, C++&nbsp;&nbsp;</div>
+          </div>
+        </div>
+        <div class="row p-0 mt-5" id="other-container">
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">INTERESSI e ALTRO</p>
+          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">INTERESTS et al.</p>
+          <div class="d-flex flex-column col-10 px-4 mt-2">
+            <p class="entry-title it">Strumenti musicali</p>
+            <p class="entry-subtitle it">Chitarra classica, batteria, <br>pianoforte</p>
+            <p class="entry-title en">Musical instruments</p>
+            <p class="entry-subtitle en">Classical guitar, drums, piano</p>
+            <p class="entry-title it">Progetti hardware</p>
+            <p class="entry-subtitle it">Raspberry Pi, Arduino, ESP32, elettronica</p>
+            <p class="entry-title en">Hardware projects</p>
+            <p class="entry-subtitle en">Raspberry Pi, Arduino, ESP32, electronics</p>
+            <p class="entry-title it">Patente di guida</p>
+            <p class="entry-subtitle it">B &bull; dal 2020</p>
+            <p class="entry-title en">Driver&apos;s license</p>
+            <p class="entry-subtitle en">B &bull; since 2020</p>
+          </div>
+        </div>
       </div>
     </div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script>
       $("#toolbar-translate").on("click", function(evt) {
         if ($("html").attr("lang") === "it") {
@@ -256,7 +316,7 @@
         }
       });
       $("#toolbar-night").on("click", function(evt) {
-        $("body, #topbar").toggleClass("dark");
+        $("body, #topbar, .entry-subtitle, .entry-bar").toggleClass("dark");
       });
       $(window).scroll(function(evt) {
         if ($(window).scrollTop() > parseFloat(getComputedStyle(document.documentElement).fontSize) * 6) {
@@ -264,7 +324,8 @@
         } else {
           $("#topbar").removeClass("shadow-sm");
         }
-      })
+      });
+      $('#toolbar-sm-menu').contextmenu()
     </script>
   </body>
 </html>
