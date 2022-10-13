@@ -34,8 +34,10 @@
               <a class="rbtn d-flex flex-row me-3 align-self-center" id="toolbar-sm-menu"><i class="bi bi-three-dots-vertical align-self-center mx-auto"></i></a>
               <div class="floating-menu-container">
                 <div class="floating-menu shadow-menu d-none" id="mode-menu">
-                  <div class="floating-menu-item ripple it"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;English</div>
-                  <div class="floating-menu-item ripple it"><i class="bi bi-xs bi-moon align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;Modalit&agrave; scura</div>
+                  <div class="floating-menu-item ripple it" id="menu-item-translate"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;English</div>
+                  <div class="floating-menu-item ripple it" id="menu-item-night"><i class="bi bi-xs bi-moon align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;Modalit&agrave; chiara/scura</div>
+                  <div class="floating-menu-item ripple en" id="menu-item-translate"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;Italiano</div>
+                  <div class="floating-menu-item ripple en" id="menu-item-night"><i class="bi bi-xs bi-moon align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;Light/dark mode</div>
                 </div>
               </div>
             </div>
@@ -389,15 +391,15 @@
       </div>
     </div>
     <script>
-      $("#toolbar-translate").on("click", function(evt) {
+      $("#toolbar-translate, #menu-item-translate").on("click", function(evt) {
         if ($("html").attr("lang") === "it") {
           $("html").attr("lang", "en");
         } else {
           $("html").attr("lang", "it");
         }
       });
-      $("#toolbar-night").on("click", function(evt) {
-        $("body, #topbar, .entry-subtitle, .entry-bar").toggleClass("dark");
+      $("#toolbar-night, #menu-item-night").on("click", function(evt) {
+        $("body, #topbar, .entry-subtitle, .entry-bar, .floating-menu").toggleClass("dark");
       });
       $(window).scroll(function(evt) {
         if ($(window).scrollTop() > parseFloat(getComputedStyle(document.documentElement).fontSize) * 6) {
