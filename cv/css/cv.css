@@ -358,10 +358,20 @@ h1, h2, h3, h4, h5 {
       to { opacity: 1; transform: scale(1); }
 }
 
+.footer-web-link {
+	display: none!important;
+}
+
 
 @media print {
 	.no-print, .no-print * {
 		opacity: 0;
+	}
+
+	.footer-web-link {
+		display: block!important;
+		font-size: 1rem;
+		color: gray;
 	}
 }
 
