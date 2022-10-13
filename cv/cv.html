@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -18,19 +19,25 @@
       <nav id="topbar" class="navbar navbar-expand-md p-0 mt-5 sticky-top">
         <div class="container-fluid">
           <div class="row flex-grow-1">
-            <div class="col-md-4 d-none d-md-block">
-              <div class="d-flex flex-row mt-4 d-inline-block px-4">
+            <div class="col-md-4 d-none d-md-block align-self-center">
+              <div class="d-flex flex-row mt-4 d-inline-block px-4 no-print">
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-translate"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i></a>
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-focus"><i class="bi bi-eyeglasses align-self-center mx-auto"></i></a>
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-night"><i class="bi bi-moon align-self-center mx-auto"></i></a>
               </div>
             </div>
             <div class="col-md-8 col-10 pt-3 pb-1 px-5 px-md-3">
-              <h1 id="full-name">Andrea Esposito</h1>
+              <h1 id="full-name">-</h1>
               <p id="full-name-sub">Developer to be</p>
             </div>
             <div class="col-2 col-md-0 d-md-none d-flex flex-row">
               <a class="rbtn d-flex flex-row me-3 align-self-center" id="toolbar-sm-menu"><i class="bi bi-three-dots-vertical align-self-center mx-auto"></i></a>
+              <div class="floating-menu-container">
+                <div class="floating-menu shadow-menu d-none" id="mode-menu">
+                  <div class="floating-menu-item it"><i class="bi bi-xs bi-translate align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;English</div>
+                  <div class="floating-menu-item it"><i class="bi bi-xs bi-moon align-self-center mx-auto"></i>&nbsp;&nbsp;&nbsp;Modalit&agrave; scura</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -67,8 +74,8 @@
         <div class="col-md-4 d-none d-md-block">
           <h3 class="my-5">&nbsp;</h3>
           <div class="row p-0" id="lang-skills-container">
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. LINGUISTICHE</p>
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">LANG. SKILLS</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. LINGUISTICHE</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto en">LANG. SKILLS</p>
             <div class="d-flex flex-column col-10 px-4 mt-2">
               <p class="entry-title it">Italiano</p>
               <p class="entry-subtitle it">Lingua madre</p>
@@ -85,8 +92,8 @@
             </div>
           </div>
           <div class="row p-0 mt-5" id="it-container">
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">IT SKILLS</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto en">IT SKILLS</p>
             <div class="col-10 px-4 mt-2">
               <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
               <div class="entry-bar p-1 my-1 en">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -102,11 +109,28 @@
               <br>
               <div class="entry-bar p-1 my-1 it">PHP, C, C++&nbsp;&nbsp;</div>
               <div class="entry-bar p-1 my-1 en">PHP, C, C++&nbsp;&nbsp;</div>
+              <br>
+              <div class="entry-bar wip p-1 my-1 it">React, JavaScript (in dettaglio), TypeScript&nbsp;&nbsp;</div>
+              <div class="entry-bar wip p-1 my-1 en">React, (in depth) JavaScript, TypeScript&nbsp;&nbsp;</div>
+            </div>
+            <div class="p-3 mt-4">
+              <div class="it it-skills-disclaimer">
+                <span class="it-skills-acquired-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Competenze attuali
+              </div>
+              <div class="en it-skills-disclaimer">
+                <span class="it-skills-acquired-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Current skills
+              </div>
+              <div class="it it-skills-disclaimer">
+                <span class="it-skills-wip-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;In fase di acquisizione (oggetto di prima esperienza o studio)
+              </div>
+              <div class="en it-skills-disclaimer">
+                <span class="it-skills-wip-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;To be acquired (first experience or tackled during the studies)
+              </div>
             </div>
           </div>
           <div class="row p-0 mt-5" id="other-container">
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">INTERESSI e ALTRO</p>
-            <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">INTERESTS et al.</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto it">INTERESSI e ALTRO</p>
+            <p class="skills-section col-1 m-0 p-0 my-auto en">INTERESTS et al.</p>
             <div class="d-flex flex-column col-10 px-4 mt-2">
               <p class="entry-title it">Strumenti musicali</p>
               <p class="entry-subtitle it">Chitarra classica, batteria, <br>pianoforte</p>
@@ -171,6 +195,23 @@
           </div>
           <div class="row">
             <div class="col-8">
+              <p class="entry-title it">Sviluppo e mantenimento FOSS in team</p>
+              <p class="entry-subtitle it">Qnets web&bull; web app gestionale per l'ISP <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.qnets.it"><b>Qnets</b></a> &bull;
+                disponibile su <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/qnets/qnetsweb/"><b>repository GitLab</b></a>
+              </p>
+              <p class="entry-title en">FOSS development and maintenance in a team</p>
+              <p class="entry-subtitle en">Qnets web &bull; management web app for the <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/qnets/qnetsweb/"><b>Qnets</b></a> ISP &bull;
+                hosted <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/qnets/qnetsweb/"><b>here</b></a>
+              </p>
+            </div>
+            <div class="d-none d-md-block col-md-1"><div class="timeline-segment"></div></div>
+            <div class="col-4 col-md-3 px-4 px-md-0 my-auto my-md-0">
+              <p class="yearspan it">Dal 2022</p>
+              <p class="yearspan en">Since 2022</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
               <p class="entry-title it">Consulenza allo sviluppo di software</p>
               <p class="entry-subtitle it">Bolzano &bull; In qualit&agrave; di libero professionista</p>
               <p class="entry-title en">Software development consulting</p>
@@ -184,13 +225,32 @@
           </div>
           <div class="row">
             <div class="col-8">
+              <p class="entry-title it">Sviluppo e mantenimento software</p>
+              <p class="entry-subtitle it">Headead &bull; app Android per monitoraggio e journaling dell'emicrania &bull;
+                disponibile su <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://github.com/dododevs/headead"><b>repository GitHub</b></a>
+              </p>
+              <p class="entry-title en">Software development and maintenance</p>
+              <p class="entry-subtitle en">Headead &bull; Android app for monitoring and journaling of migraine episodes &bull;
+                hosted <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://github.com/dododevs/headead"><b>here</b></a>
+              </p>
+            </div>
+            <div class="d-none d-md-block col-md-1"><div class="timeline-segment"></div></div>
+            <div class="col-4 col-md-3 px-4 px-md-0 my-auto my-md-0">
+              <p class="yearspan it">2021</p>
+              <p class="yearspan en">2021</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
               <p class="entry-title it">Sviluppo e mantenimento FOSS in team</p>
               <p class="entry-subtitle it">MoveAid &bull; webapp planner e gestionale per servizio trasporto offerto da ADA Bolzano &bull;
                 presentato a <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sfscon.it/talks/moveaid-a-web-app-to-foster-accessible-mobility/"><b>SFSCON 2021</b></a>
+                e disponibile su <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/lugbz/moveaid/server/"><b>repository GitLab</b></a>
               </p>
               <p class="entry-title en">FOSS development and maintenance in a team</p>
               <p class="entry-subtitle en">MoveAid &bull; planner/management web app for accompaniment service offered by ADA Bolzano-Bozen &bull;
                 presented during <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sfscon.it/talks/moveaid-a-web-app-to-foster-accessible-mobility/"><b>SFSCON 2021</b></a>
+                and hosted <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/lugbz/moveaid/server/"><b>here</b></a>
               </p>
             </div>
             <div class="d-none d-md-block col-md-1"><div class="timeline-segment"></div></div>
@@ -221,7 +281,7 @@
             <div class="col-8">
               <p class="entry-title it"><a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sfscon.it/talks/moveaid-a-web-app-to-foster-accessible-mobility/">Speaker presso SFSCON 2021</a></p>
               <p class="entry-subtitle it">Bolzano &bull; Presentando il progetto MoveAid</p>
-              <p class="entry-title en"><a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sfscon.it/talks/moveaid-a-web-app-to-foster-accessible-mobility/">Speaker presso SFSCON 2021Speaker during SFSCON 2021</a></p>
+              <p class="entry-title en"><a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sfscon.it/talks/moveaid-a-web-app-to-foster-accessible-mobility/">Speaker during SFSCON 2021</a></p>
               <p class="entry-subtitle en">Bolzano &bull; Presenting the MoveAid project</p>
             </div>
             <div class="d-none d-md-block col-md-1"><div class="timeline-segment-top"></div></div>
@@ -250,8 +310,8 @@
       <div class="container-fluid ps-4 bg-accent d-md-none" id="additional-info-sm">
         <h3 class="my-5">&nbsp;</h3>
         <div class="row p-0" id="lang-skills-container">
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. LINGUISTICHE</p>
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">LANG. SKILLS</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. LINGUISTICHE</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto en">LANG. SKILLS</p>
           <div class="d-flex flex-column col-10 px-4 mt-2">
             <p class="entry-title it">Italiano</p>
             <p class="entry-subtitle it">Lingua madre</p>
@@ -268,8 +328,8 @@
           </div>
         </div>
         <div class="row p-0 mt-5" id="it-container">
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">IT SKILLS</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto en">IT SKILLS</p>
           <div class="col-10 px-4 mt-2">
             <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <div class="entry-bar p-1 my-1 en">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -285,11 +345,26 @@
             <br>
             <div class="entry-bar p-1 my-1 it">PHP, C, C++&nbsp;&nbsp;</div>
             <div class="entry-bar p-1 my-1 en">PHP, C, C++&nbsp;&nbsp;</div>
+            <br>
+            <div class="entry-bar wip p-1 my-1 it">React, JavaScript (in dettaglio), TypeScript&nbsp;&nbsp;</div>
+            <div class="entry-bar wip p-1 my-1 en">React, (in depth) JavaScript, TypeScript&nbsp;&nbsp;</div>
+            <div class="it it-skills-disclaimer mt-5">
+              <span class="it-skills-acquired-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;Competenze attuali
+            </div>
+            <div class="en it-skills-disclaimer">
+              <span class="it-skills-acquired-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;Current skills
+            </div>
+            <div class="it it-skills-disclaimer">
+              <span class="it-skills-wip-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;In fase di acquisizione (oggetto di prima esperienza o studio)
+            </div>
+            <div class="en it-skills-disclaimer">
+              <span class="it-skills-wip-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;To be acquired (first experience or tackled during the studies)
+            </div>
           </div>
         </div>
         <div class="row p-0 mt-5" id="other-container">
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto it">INTERESSI e ALTRO</p>
-          <p id="lang-skills-section" class="col-1 m-0 p-0 my-auto en">INTERESTS et al.</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto it">INTERESSI e ALTRO</p>
+          <p class="skills-section col-1 m-0 p-0 my-auto en">INTERESTS et al.</p>
           <div class="d-flex flex-column col-10 px-4 mt-2">
             <p class="entry-title it">Strumenti musicali</p>
             <p class="entry-subtitle it">Chitarra classica, batteria, <br>pianoforte</p>
@@ -325,7 +400,20 @@
           $("#topbar").removeClass("shadow-sm");
         }
       });
-      $('#toolbar-sm-menu').contextmenu()
+      const menuToggleHandler = (evt) => {
+        $('#toolbar-sm-menu').off('click');
+        $('#mode-menu').toggleClass('d-none');
+        setTimeout(() => $('#toolbar-sm-menu').on('click', menuToggleHandler), 200);
+      };
+      $('#toolbar-sm-menu').on('click', menuToggleHandler);
+      $('html').on('click', function(evt) {
+        if ($(evt.target).parent().attr("id") === "toolbar-sm-menu") {
+          return;
+        }
+        if (!$('#mode-menu').hasClass('d-none')) {
+          setTimeout(() => $('#mode-menu').addClass("d-none"), 150);
+        }
+      })
     </script>
   </body>
 </html>
