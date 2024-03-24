@@ -455,7 +455,9 @@
             <small style="margin-top: 3rem;"><ul>
               <li style="margin-bottom: 0.6rem;">OCI/Docker containers</li>
               <small class="aexp">Custom made, for building and performing the OSU benchmark suite</small>
-              <li style="margin-bottom: 0.6rem;">MPIJobs scheduled</li>
+              <li style="margin-bottom: 0.6rem;">Pod affinity constraints</li>
+              <small class="aexp">To change the deployment strategy and distinguish between single-node and multi-node</small>
+              <li style="margin-bottom: 0.6rem;">Schedule through MPIJobs</li>
               <small class="aexp">To create the needed resources, launcher and worker pods, and to dispatch the wanted task</small>
               <li style="margin-bottom: 0.6rem;">Launcher pod logs</li>
               <small class="aexp">To retrieve the results</small>
@@ -464,6 +466,19 @@
         </section>
 
         <!-- slide 25 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">EXERCISE 2A: SETUP</small>
+          <div class="slide">
+            <small class="aexp">Tweaking pod affinity</small>
+            <small class="aexp muted">in the deployment yaml file</small>
+            <img src="img/affinity.png" style="width: 50rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 26 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
@@ -477,7 +492,7 @@
           </div>
         </section>
 
-        <!-- slide 26 -->
+        <!-- slide 27 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
@@ -489,7 +504,7 @@
           </div>
         </section>
 
-        <!-- slide 27 -->
+        <!-- slide 28 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
@@ -501,7 +516,7 @@
           </div>
         </section>
 
-        <!-- slide 28 -->
+        <!-- slide 29 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
@@ -517,7 +532,7 @@
           </div>
         </section>
 
-        <!-- slide 29 -->
+        <!-- slide 30 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
@@ -527,16 +542,18 @@
             <div class="slide">
               <small class="aexp">CHALLENGES</small>
               <small style="margin-top: 3rem;"><ul>
-                <li style="margin-bottom: 0.6rem;">Dispatching MPI jobs with the MPI operator</li>
-                <small class="aexp">the MPI operator bears improvable documentation</small>
                 <li style="margin-bottom: 0.6rem;">Setting up local registries</li>
                 <small class="aexp">in order for nodes to be able to share the custom built Docker images</small>
+                <li style="margin-bottom: 0.6rem;">Dispatching MPI jobs with the MPI operator</li>
+                <small class="aexp">the MPI operator bears improvable documentation</small>
+                <li style="margin-bottom: 0.6rem;">Configuring pod affinity</li>
+                <small class="aexp">to tweak the pod scheduling strategy</small>
               </ul></small> 
             </div>
           </div>
         </section>
 
-        <!-- slide 30 -->
+        <!-- slide 31 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
