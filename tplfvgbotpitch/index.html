@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>tplfvgbot</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted"></small>
+            <small class="aexp">Presentazione delle funzionalità principali</small>
+            <h3 class="inter" style="margin-top: 2rem;">tplfvgbot: <span class="muted">bot Telegram<br>per il trasporto pubblico in FVG</span></h3>
+            <small style="margin-top: 2.6rem;"><code>Andrea Esposito &lt;aespositox@gmail.com&gt;</code></small>
+          </div>
+        </section>
+
+				<!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">COS'È UN BOT TELEGRAM</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <img src="img/tg_logo.png" style="width: 16rem;"/>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">Account automatizzato con cui è possibile<br>interagire come con un qualunque contatto</li>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">Gestito da un programma in esecuzione su<br> un computer, come un server web</li>
+									<small class="aexp">scritto in Python, potenzialmente containerizzabile per es. con Docker</small>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">Informazioni sul servizio ottenute dai server<br>esistenti di TPL FVG</li>
+									<small class="aexp">grazie agli API attivi; alcune informazioni assenti ottenute dal sito</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <video style="height: 52rem; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);" autoplay loop>
+								<source src="media/start.mp4"/>
+							</video>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">Interazione tramite comandi, riconosciuti dal bot,<br>cui è associata una risposta
+										statica o dinamica
+									</li>
+									<small class="aexp">preceduti da uno slash e cliccabili o selezionabili dal menu del bot</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">in questo caso, il comando start mostra un<br>messaggio esplicativo del funzionamento del bot</li>
+									<small class="aexp">risposta statica</small>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">scrivendo il codice di una fermata, è possibile consultarne<br>l'orario in tempo reale</li>
+									<small class="aexp">altri metodi di ricerca descritti successivamente</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <video style="height: 52rem; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);" autoplay loop>
+								<source src="media/search.mp4"/>
+							</video>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">ricerca fermata per nome</li>
+									<small class="aexp">risultati con linee e direzione, per individuare la fermata corretta</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">codici delle fermate cliccabili</li>
+									<small class="aexp">per evitare di riscrivere il codice fermata appena trovato</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <video style="height: 52rem; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);" autoplay loop>
+								<source src="media/fav.mp4"/>
+							</video>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di salvare fermate come preferite</li>
+									<small class="aexp">con nome personalizzato a scelta dell'utente</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">accesso rapido alle fermate preferite</li>
+									<small class="aexp">mostrate come bottoni sempre a portata di mano</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di rimuovere fermate preferite</li>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <video style="height: 52rem; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);" autoplay loop>
+								<source src="media/recents+zones.mp4"/>
+							</video>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di consultare le fermate recenti</li>
+									<small class="aexp">per consultazione rapida</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di consultare le fermate preferite</li>
+									<small class="aexp">con nome e codice per esteso</small>
+									<li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di impostare una o più zone di ricerca</li>
+									<small class="aexp">per ottenere solo risultati rilevanti dalla ricerca delle fermate</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 8 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width:100%; align-items: center; justify-content: space-evenly;">
+              <video style="height: 52rem; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);" autoplay loop>
+								<source src="media/route.mp4"/>
+							</video>
+              <div class="d-flex" style="margin-left: 2rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li class="aexp muted" style="margin-bottom: 0.6rem;">possibilità di consultare il percorso di una specifica corsa</li>
+									<small class="aexp">utile prima e durante il viaggio (per es. in caso di display non funzionante o non visibile)</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+				</section>
+
+				<!-- slide 9 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <small class="muted aexp" style="height: 3rem;">tplfvgbot &bull; Andrea Esposito</small>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GRAZIE DELL'ATTENZIONE</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="width: 100%; align-items: center; justify-content: center;">
+							<div class="d-flex flex-col" style="align-items: center; margin: 0 4rem 0 4rem;">
+								<div style="border-radius: 50%; overflow: hidden; width: 6rem; height: 6rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+									<img src="img/logo.jpg" style="width: 6rem; max-width: 999px; max-height: 999px; margin: 0;"/>
+								</div>
+								<small class="aexp" style="margin-top: 2rem; font-size: 1.5rem;"><a href="https://t.me/tplfvgbot">Al bot</a></small>
+								<small class="aexp"><small class="aexp muted" style="margin-top: 1rem;">Richiede un<br>account Telegram</small></small>
+							</div>
+							<div class="d-flex flex-col" style="align-items: center;">
+								<div style="border-radius: 50%; overflow: hidden; width: 6rem; height: 6rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); background-color: #FA8072;">
+									<img src="img/badge-account.svg" style="width: 4rem; max-width: 999px; max-height: 999px; margin-bottom: 1rem; margin-top: 0.9rem;"/>
+								</div>
+								<small class="aexp" style="margin-top: 2rem; font-size: 1.5rem;"><a href="https://dododevs.github.io/cv">Al dev</a></small>
+								<small class="aexp"><small class="aexp muted" style="margin-top: 1rem;">profilo<br>dello sviluppatore</small></small>
+							</div>
+            </div>
+          </div>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
