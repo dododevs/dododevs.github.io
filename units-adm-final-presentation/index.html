@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Fairflights&nbsp;&bull;&nbsp;ADM 2024</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">Advanced Data Management 2023/24 Final Assignment</small>
+            <small class="aexp" style="margin-top: 2rem;">A CASE STUDY</small>
+            <h3 class="inter" style="margin-top: 1rem;">Fairflights: an open repository for aviation data</h3>
+            <small style="margin-top: 2.6rem;">Scientific and Data Intensive Computing &bull; Andrea Esposito [SM3600005]</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: RATIONALE</small>
+          <div class="slide">
+            <small class="aexp">Devising and developing a Proof of Concept for<br>an online repository hosting and giving access to<br>aviation datasets for research purposes</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">5&#9733; scheme and FAIR compliant</li>
+              <small class="aexp">providing access to linked, referrable and explainable resources</small>
+              <li style="margin-bottom: 0.6rem;">Accessible through web interface and REST API</li>
+              <small class="aexp">Developed in Python, Django and external libraries</small>
+              <li style="margin-bottom: 0.6rem;">Hosting files and an internal metadata database</li>
+              <small class="aexp">aimed at providing cohesion among datasets</small>
+              <li style="margin-bottom: 0.6rem;">Organized with a Data Management Plan</li>
+              <small class="aexp">describing the data curation and preservation processes</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DATA MANAGEMENT PLAN <span class="muted aexp">/&nbsp;CURATION</span></small>
+          <div class="slide">
+            <div class="flex-row">
+              <div style="width: 50%;">
+                <img src="img/dcc.png" style="width: 42rem;"/>
+              </div>
+              <div style="width: 50%;" class="flex-col">
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">CREATE OR RECEIVE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">HOW WILL THE DATA BE COLLECTED OR CREATED?</small>
+                  <small style="margin-bottom: 4rem;"><ul>
+                    <li style="margin-bottom: 0.6rem;">Aviation observational data to be used for research purposes</li>
+                    <li style="margin-bottom: 0.6rem;">Enrichment through third-party services<br>e.g. forecasted and recorded weather, commercial flights data</li>
+                    <li style="margin-bottom: 0.6rem;">Heavy data volume</li>
+                    <li style="margin-bottom: 0.6rem;">Open standards and accompanying metadata</li>
+                  </ul></small>
+
+                  <small class="aexp">CREATE OR RECEIVE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">WHAT DATA WILL BE COLLECTED?</small>
+                  <small><ul>
+                    <li style="margin-bottom: 0.6rem;">By aggregation from third-party services, by crowd-sourcing sensor data and by contacting entities that would benefit from a centralized data pool</li>
+                    <li style="margin-bottom: 0.6rem;">Error checking with other available data sources and running sanity checks</li>
+                    <li style="margin-bottom: 0.6rem;">Obfuscation e.g. anonymization of operating airlines and sensible data</li>
+                    <li style="margin-bottom: 0.6rem;">Establishment of a common framework for data submission</li>
+                  </ul></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DATA MANAGEMENT PLAN <span class="muted aexp">/&nbsp;CURATION</span></small>
+          <div class="slide">
+            <div class="flex-row">
+              <div style="width: 50%;">
+                <img src="img/dcc.png" style="width: 42rem;"/>
+              </div>
+              <div style="width: 50%;" class="flex-col">
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">APPRAISE & SELECT</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">WHAT DOCUMENTATION AND<br>METADATA WILL ACCOMPANY THE DATA?</small>
+                  <small style="margin-top: 1rem;"><ul>
+                    <li style="margin-bottom: 0.6rem;">Demand of including accompanying metadata</li>
+                    <small class="aexp muted">file metadata and domain metadata</small>
+                    <li style="margin-bottom: 0.6rem;">Recommendation of including provenance metadata</li>
+                    <small class="aexp muted">data source, measurement information, preprocessing if any...</small>
+                    <li style="margin-bottom: 0.6rem;">Recommendation of including data structure metadata</li>
+                    <small class="aexp muted">ontology where applicable</small>
+                    <li style="margin-bottom: 0.6rem;">Demand of application of a license compatible with long-term storage and redistribution</li>
+                  </ul></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DATA MANAGEMENT PLAN <span class="muted aexp">/&nbsp;PRESERVATION</span></small>
+          <div class="slide">
+            <div class="flex-row">
+              <div style="width: 50%;">
+                <img src="img/dcc.png" style="width: 42rem;"/>
+              </div>
+              <div style="width: 50%;" class="flex-col">
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">INGEST + STORE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">HOW WILL THE DATA BE STORED AND BACKED UP?</small>
+                  <small><ul>
+                    <li style="margin-bottom: 0.6rem;">Outsourced storage solution providing scalable infrastructure and redundancy</li>
+                    <small class="aexp muted">IN CLOUD SERVICES LIKE S3, AZURE</small>
+                    <li style="margin-bottom: 0.6rem;">Data encryption</li>
+                    <small class="aexp muted">ON-THE-FLY ENCRYPTION AND DECRYPTION</small>
+                    <li style="margin-bottom: 0.6rem;">Operation redundancy and backups managed by third-party provider</li>
+                    <li style="margin-bottom: 0.6rem;">(Meta)data access granted by organization</li>
+                  </ul></small>
+                </div>
+
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">INGEST + STORE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">HOW WILL SECURITY AND ACCESS BE MANAGED?</small>
+                  <small><ul>
+                    <li style="margin-bottom: 0.6rem;">Account creation for managing access to data</li>
+                    <small class="aexp muted">UPON ACCESS REQUEST APPROVAL</small>
+                    <li style="margin-bottom: 0.6rem;">API key issue for automatized access to data</li>
+                    <small class="aexp muted">PERIODICALLY CHECKING FOR REDISTRIBUTION AND MISUSE</small>
+                  </ul></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DATA MANAGEMENT PLAN <span class="muted aexp">/&nbsp;PRESERVATION</span></small>
+          <div class="slide">
+            <div class="flex-row">
+              <div style="width: 50%;">
+                <img src="img/dcc.png" style="width: 42rem;"/>
+              </div>
+              <div style="width: 50%;" class="flex-col">
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">PRESERVE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">WHICH DATA SHOULD BE RETAINED/PRESERVED?</small>
+                  <small style="margin-bottom: 4rem;"><ul>
+                    <li style="margin-bottom: 0.6rem;">Long-term preservation eligibility review</li>
+                    <li style="margin-bottom: 0.6rem;">Sensor data deemed as ephemeral and therefore retained</li>
+                    <small class="aexp muted">e.g. aircraft positioning data, weather conditions data...</small>
+                    <li style="margin-bottom: 0.6rem;">Any data regarding other influencing factors</li>
+                    <small class="aexp muted">e.g. maintenance reports, number of passengers traveling,<br>relevant concurrent geopolitical and social events</small>
+                  </ul></small>
+
+                  <small class="aexp">PRESERVE + TRANSFORM</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">WHAT IS THE<br>PRESERVATION PLAN<br>FOR THE DATASET?</small>
+                  <small style="margin-top: 1rem;"><ul>
+                    <li style="margin-bottom: 0.6rem;">Minimum preservation time span of 10 years</li>
+                    <small class="aexp muted">VARIABLE AS AVAILABLE SOLUTIONS AND/OR BUDGET CHANGES</small>
+                    <li style="margin-bottom: 0.6rem;">Generation of synthesized data</li>
+                    <small class="aexp muted">WITH CRITERIA TO BE DEFINED, e.g. REDUCING SAMPLING RATE OF TRAJECTORIES</small>
+                    <li style="margin-bottom: 0.6rem;">Storage of synthesized data on longer-term storage supports</li>
+                    <small class="aexp muted">SLOWER, MORE COST-EFFECTIVE</small>
+                    <li style="margin-bottom: 0.6rem;">Chunked data transformation</li>
+                    <small class="aexp muted">WITH RELEVANT USER NOTIFICATIONS</small>
+                  </ul></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 7 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DATA MANAGEMENT PLAN <span class="muted aexp">/&nbsp;CURATION #2</span></small>
+          <div class="slide">
+            <div class="flex-row">
+              <div style="width: 50%;">
+                <img src="img/dcc.png" style="width: 42rem;"/>
+              </div>
+              <div style="width: 50%;" class="flex-col">
+                <div style="margin-top: auto; margin-bottom: auto; text-align: start;">
+                  <small class="aexp">ACCESS, USE & REUSE</small>
+                  <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">HOW WILL YOU SHARE THE DATA?</small>
+                  <small style="margin-bottom: 4rem;"><ul>
+                    <li style="margin-bottom: 0.6rem;">Access through web interface and REST API</li>
+                    <small class="aexp muted">TO ALLOW FOR CONSULTATION AND (bulk) DOWNLOAD</small>
+                    <li style="margin-bottom: 0.6rem;">Data sharing to similar organizations</li>
+                    <small class="aexp muted">TO BE REVIEWED UPON REQUEST</small>
+                    <li style="margin-bottom: 0.6rem;">No data use restriction</li>
+                    <small class="aexp muted">APART FROM MISUSE CONDITIONS AND MEDIATED ACCESS</small>
+                  </ul></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 8 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: Open Data <span class="muted aexp">/&nbsp;&#9733;</span></small>
+          <div class="slide">
+            <small class="aexp" style="position: absolute; bottom: 12rem;">Make your stuff available on the Web under an open license</small>
+            <img src="img/license_footer.png" style="width: 64rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 9 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: Open Data <span class="muted aexp">/&nbsp;&#9733;&#9733;</span></small>
+          <div class="slide">
+            <small class="aexp" style="position: absolute; bottom: 12rem;">Make it available as structured data</small>
+            <img src="img/table.png" style="width: 128rem; margin-top: 4rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 10 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: Open Data <span class="muted aexp">/&nbsp;&#9733;&#9733;&#9733;</span></small>
+          <div class="slide">
+            <small class="aexp" style="position: absolute; bottom: 12rem;">Make it available in a non-proprietary open format</small>
+            <img src="img/open_format.png" style="width: 96rem; margin-top: 4rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 11 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: Open Data <span class="muted aexp">/&nbsp;&#9733;&#9733;&#9733;&#9733;</span></small>
+          <div class="slide">
+            <small class="aexp" style="position: absolute; bottom: 12rem;">Use URIs to denote things</small>
+            <img src="img/uri.png" style="width: 64rem; margin-top: 4rem; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);"/>
+          </div>
+        </section>
+
+        <!-- slide 12 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: Open Data <span class="muted aexp">/&nbsp;&#9733;&#9733;&#9733;&#9733;&#9733;</span></small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Repository, datasets, files and metadata linked together</li>
+              <small class="aexp">using unique resource identifiers</small>
+              <li style="margin-bottom: 0.6rem;">Data and metadata linked to their ontologies</li>
+              <small class="aexp">for explainability and interoperability</small>
+              <li style="margin-bottom: 0.6rem;">Data interlinked with internal database</li>
+              <small class="aexp">providing relevant contextual information</small>
+              <li style="margin-bottom: 0.6rem;">Possible improvement: link with external data</li>
+              <small class="aexp">not hosted on the platform but relevant</small>
+            </ul></small> 
+            <small class="aexp" style="position: absolute; bottom: 12rem;">Link your data to other data to provide context</small>
+          </div>
+        </section>
+
+        <!-- slide 13 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FAIR compliancy <span class="muted aexp">/&nbsp;FINDABILITY</span></small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Data and metadata accessible through URL including unique dataset and file identifiers</li>
+              <small class="aexp muted"><span style="color: black;">F1.</span> (meta)data are assigned a globally unique and persistent identifier</small>
+              <div style="margin-top: 1rem; margin-bottom: 1.6rem;">
+                <code>
+                  https://fairflights.org/datasets/82c046b3-0320-4517-b07f-0932761fdc81
+                </code>
+              </div>
+              <li style="margin-bottom: 0.6rem;">Datasets and files accompanied with explicative metadata describing structure and content</li>
+              <small class="aexp muted"><span style="color: black;">F2.</span> data are described with rich metadata</small>
+              <div style="margin-bottom: 1.6rem; justify-content: center;" class="flex-row">
+                <img src="img/catalog_ontology_dd.png" style="width: 20rem;"/>
+                <img src="img/file_ontology_dd.png" style="width: 16rem;"/>
+              </div>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 14 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FAIR compliancy <span class="muted aexp">/&nbsp;FINDABILITY</span></small>
+          <div class="slide">
+            <small><ul>
+              <li style="margin-bottom: 0.6rem;">File ontologies include file names and unique identifiers</li>
+              <small class="aexp muted"><span style="color: black;">F3.</span> metadata clearly and explicitly include the identifier of the data it describes</small>
+              <div style="margin-bottom: 1.6rem; justify-content: center; margin-top: -3rem;" class="flex-row">
+                <img src="img/file_ontology_f.png" style="width: 56rem;"/>
+              </div>
+              <li style="margin-bottom: 0.6rem;">Datasets are grouped in a catalog,<br>which can be easily exported in other indexed resources</li>
+              <small class="aexp muted"><span style="color: black;">F4.</span> (meta)data are registered or indexed in a searchable resource</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 15 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FAIR compliancy <span class="muted aexp">/&nbsp;ACCESSIBILITY</span></small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">(meta)data is identified by URLs <small class="aexp muted">open standard, §A1.1</small><br>and can be supplied via login <small class="aexp muted">authorization, §A1.2</small></li>
+              <small class="aexp muted" style="margin-bottom: 1.6rem;"><span style="color: black;">A1.</span> (meta)data are retrievable by their identifier using a standardized communications protocol</small>
+              <li style="margin-bottom: 0.6rem;">Metadata is stored separately to data and is retained independently</li>
+              <small class="aexp muted"><span style="color: black;">A2.</span> metadata are accessible, even when the data are no longer available</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 16 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FAIR compliancy <span class="muted aexp">/&nbsp;INTEROPERABILITY</span></small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">All ontologies are RDF/OWL and stored in supported formats (Turtle)</li>
+              <small class="aexp muted" style="margin-bottom: 1.6rem;"><span style="color: black;">I1.</span> (meta)data use a formal, accessible, shared,<br>and broadly applicable language for knowledge representation</small>
+              <li style="margin-bottom: 0.6rem;">All ontologies use widely recognized FAIR-compliant vocabularies</li>
+              <small class="aexp muted"><span style="color: black;">I2.</span> (meta)data use vocabularies that follow FAIR principles</small>
+              <li style="margin-bottom: 0.6rem;">Metadata refers to (meta)data using URIs</li>
+              <small class="aexp muted"><span style="color: black;">I3.</span> (meta)data include qualified references to other (meta)data</small>
+              <div style="margin-bottom: 1.6rem; justify-content: center; margin-top: -3rem;" class="flex-row">
+                <img src="img/conforms.png" style="width: 52rem;"/>
+              </div>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 17 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FAIR compliancy <span class="muted aexp">/&nbsp;REUSABILITY</span></small>
+          <div class="slide">
+            <small style="margin-top: 0rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">All (meta)data served under CC BY-NC 4.0 unless noted</li>
+              <small class="aexp muted"><span style="color: black;">R1.1.</span> (meta)data are released with a clear and accessible data usage license</small>
+              <li style="margin-bottom: 0.6rem;">Provenance information included in ontologies</li>
+              <small class="aexp muted"><span style="color: black;">R1.2.</span> (meta)data are associated with detailed provenance</small>
+              <div style="margin-bottom: -3.6rem; justify-content: center; margin-top: -3rem;" class="flex-row">
+                <img src="img/provenance.png" style="width: 48rem;"/>
+              </div>
+              <li style="margin-bottom: 0.6rem;">Relevant vocabularies used for describing files and content</li>
+              <small class="aexp muted"><span style="color: black;">R1.3.</span> (meta)data meet domain-relevant community standards</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 18 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: ANALYSIS OF ORIGINAL DATASET</span></small>
+          <div class="slide">
+            <small class="aexp">METADATA STANDARDIZATION</small>
+            <small class="aexp muted">AUTOMATED VIA PYTHON SCRIPT</small>
+            <div class="flex-row" style="align-items: center;">
+              <img style="height: 8rem;" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14%202H6C4.9%202%204%202.9%204%204V20C4%2021.1%204.9%2022%206%2022H18C19.1%2022%2020%2021.1%2020%2020V8L14%202M15%2016L13%2020H10L12%2016H9V11H15V16M13%209V3.5L18.5%209H13Z%22%20%2F%3E%3C%2Fsvg%3E"/>
+              &nbsp;&nbsp;&rarr;
+              <img src="img/aircraft.png" style="height: 48rem;"/>
+            </div>
+          </div>
+        </section>
+        
+        <!-- slide 19 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: INTERNAL DATABASE</small>
+          <div class="slide">
+            <img src="img/uml.png" style="width: 92rem; margin-top: 2rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 20 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DJANGO MODEL</small>
+          <div class="slide">
+            <img src="img/django_model.png" style="width: 54rem; margin-top: 2rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 21 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: DJANGO MODEL RELATIONS</small>
+          <div class="slide">
+            <img src="img/django_fk.png" style="width: 54rem; margin-top: 2rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 22 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: GEOSPATIAL DATA VISUALIZATION</span></small>
+          <div class="slide">
+            <div style="overflow: hidden; transform: translateX(-3rem);">
+              <video loop autoplay style="transform: translateX(3rem);">
+                <source src="media/map.mp4"/>
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 23 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: PARQUET FORMAT</small>
+          <div class="slide">
+            <small class="aexp">Apache Parquet is an open source, column-oriented data file format<br>designed for efficient data storage and retrieval</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Column data is contiguous in the file</li>
+              <small class="aexp muted" style="margin-bottom: 1.6rem;">Column-based</small>
+              <li style="margin-bottom: 0.6rem;">Data is efficiently compressed by default using the Snappy algorithm</li>
+              <small class="aexp muted">Compression-ready</small>
+              <li style="margin-bottom: 0.6rem;">Designed to be stored on distributed and/or object storage</li>
+              <small class="aexp muted">HDFS blocked and S3-ready</small>
+              <li style="margin-bottom: 0.6rem;">Developed and released by Apache under the Apache License</li>
+              <small class="aexp muted">Free and Open Source</small>
+              <li style="margin-bottom: 0.6rem;">Made to accomodate new encodings and compression methods as they are developed</li>
+              <small class="aexp muted">Expandable</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 24 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: PARQUET VS HDF5</small>
+          <div class="slide">
+            <div class="flex-row" style="align-items: center;">
+              <small style="margin-top: 3rem;"><ul>
+                <li style="margin-bottom: 0.6rem;">Columnar</li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FILE STRUCTURE</small>
+                <li style="margin-bottom: 0.6rem;">Single dataset/dataframe</li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">DATA TOPOLOGY</small>
+                <li style="margin-bottom: 0.6rem;">Optimized for <b>storage</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Optimized for <b>sequential access</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Optimized for <b>homogeneous</b> data</li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Ubiquitous in <b>warehousing</b> and <b>big data</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">USE CASE</small>
+              </ul></small> 
+              <small class="aexp muted" style="margin: 3rem;">VS</small>
+              <small style="margin-top: 3rem;"><ul>
+                <li style="margin-bottom: 0.6rem;">Hierarchical</li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FILE STRUCTURE</small>
+                <li style="margin-bottom: 0.6rem;">Multiple/nested datasets</li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">DATA TOPOLOGY</small>
+                <li style="margin-bottom: 0.6rem;">Optimized for <b>performance</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Optimized for <b>random access</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Supports <b>complex datatypes</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">FOCUS</small>
+                <li style="margin-bottom: 0.6rem;">Ubiquitous for <b>scientific data</b></li>
+                <small class="aexp muted" style="margin-bottom: 1.6rem;">USE CASE</small>
+              </ul></small> 
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 25 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FILE FORMATS PERFORMANCE ON ORFEO</small>
+          <div class="slide">
+            <div style="overflow: hidden;">
+              <img src="img/io_str.png" style="width: 54rem; margin-top: 2rem; transform: scale(1.11);"/>
+            </div>
+          </div>
+        </section>
+        
+        <!-- slide 26 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FILE FORMATS PERFORMANCE ON ORFEO</small>
+          <div class="slide">
+            <div style="overflow: hidden;">
+              <img src="img/space_str.png" style="width: 54rem; margin-top: 2rem; transform: scaleY(1.11) scaleX(1.078);"/>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 27 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FILE FORMATS PERFORMANCE ON ORFEO</small>
+          <div class="slide">
+            <div style="overflow: hidden;">
+              <img src="img/io_cat.png" style="width: 54rem; margin-top: 2rem; transform: scale(1.11);"/>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 28 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: FILE FORMATS PERFORMANCE ON ORFEO</small>
+          <div class="slide">
+            <div style="overflow: hidden;">
+              <img src="img/hdf5_vs_parquet.png" style="width: 105rem; margin-top: 2rem;"/>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 29 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: HDF5 PERFORMANCE ON ORFEO</small>
+          <div class="slide">
+            <table style="max-width: 80vw;">
+              <thead>
+                <td><small class="aexp">OPERATION</small></td>
+                <td><small class="aexp">HOME<br><b class="muted" style="text-transform: none; font-size: 1.5rem;">GB/s</b></td>
+                <td><small class="aexp">SCRATCH<br><b class="muted" style="text-transform: none; font-size: 1.5rem;">GB/s</b></td>
+                <td><small class="aexp">FAST<br><b class="muted" style="text-transform: none; font-size: 1.5rem;">GB/s</b></td>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="flex-col" style="font-size: 1.8rem;">Read<small class="aexp muted" style="font-size: 1rem; margin-top: auto;">CONTIGUOUS MEMORY AND FILE</small></td>        
+                  <td style="font-size: 2rem; align-items: center;">2.127</td>
+                  <td style="font-size: 2rem; align-items: center;">2.813</td>
+                  <td style="font-size: 2rem; align-items: center;">2.674</td>
+                </tr>
+                <tr>
+                  <td class="flex-col" style="font-size: 1.8rem;">Write<small class="aexp muted" style="font-size: 1rem; margin-top: auto;">CONTIGUOUS MEMORY AND FILE</small></td>        
+                  <td style="font-size: 2rem; align-items: center;">1.577</td>
+                  <td style="font-size: 2rem; align-items: center;">1.444</td>
+                  <td style="font-size: 2rem; align-items: center;">1.610</td>
+                </tr>
+                <tr>
+                  <td class="flex-col" style="font-size: 1.8rem;">Write<small class="aexp muted" style="font-size: 1rem; margin-top: auto;">CONTIGUOUS MEMORY TO<br>INTERLEAVED FILE</small></td>        
+                  <td style="font-size: 2rem; align-items: center;">0.195</td>
+                  <td style="font-size: 2rem; align-items: center;">0.163</td>
+                  <td style="font-size: 2rem; align-items: center;">0.166</td>
+                </tr>
+              </tbody>
+            </table>
+            <small class="aexp muted" style="position: absolute; bottom: 12rem;">H5bench &bull; 60GB &bull; 24 ranks on THIN</small>
+          </div>
+        </section>
+
+        <!-- slide 30 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">FAIRFLIGHTS: POSSIBLE IMPROVEMENTS</small>
+          <div class="slide">
+            <small class="aexp">THE PRESENTED PROOF OF CONCEPT SHOWS HOW A FAIR-COMPLIANT DATA REPOSITORY<br>FOR AVIATION COULD BE STRUCTURED, DEVELOPED AND MAINTAINED</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Inbound and outbound linking to external data</li>
+              <small class="aexp muted">INTERLINKING WITH EXTERNAL DATA</small>
+              <li style="margin-bottom: 0.6rem;">Live data feed with on-the-fly processing and storage</li>
+              <small class="aexp muted">REAL-TIME DATA INGESTION</small>
+              <li style="margin-bottom: 0.6rem;">Use of scientific data formats e.g. HDF5</li>
+              <small class="aexp muted">MORE SUITABLE FORMATS</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 31 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">THANK YOU FOR YOUR ATTENTION</small>
+          <div class="slide"></div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
