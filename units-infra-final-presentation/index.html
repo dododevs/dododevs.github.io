@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>HPC & Data Infrastructure 2024/25</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">HPC & Data Infrastructure 2024/25 Final Assignment</small>
+            <h3 class="inter" style="margin-top: 2rem;">Virtual Orfeo: integrating services<br>and features in a cluster's digital twin</h3>
+            <small style="margin-top: 2.6rem;">Scientific and Data Intensive Computing &bull; Andrea Esposito [SM3600005] &bull; Roberta Lamberti [SM36xxxxx]</small>
+            <small style="margin-top: 1rem;">Data Science and Artificial Intelligence &bull; Alberto Russo [SM38xxxxx]</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">01_CEPH: GOAL</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Deploying a virtualized CEPH cluster</li>
+              <small class="aexp" style="font-size: 1.1rem;">creating and maintaining a quorum and adding storage for OSDs</small>
+              <li style="margin-bottom: 0.6rem;">Creating OSDs, relevant CRUSH rules and pools</li>
+              <small class="aexp" style="font-size: 1.1rem;">1 osd per node, 1 rule (HDD), 1 pool (replicated)</small>
+              <li style="margin-bottom: 0.6rem;">Creating a Volume</li>
+              <small class="aexp" style="font-size: 1.1rem;">using the created pool as data pool</small>
+              <li style="margin-bottom: 0.6rem;">Mounting the CEPH filesystem on clients</li>
+              <small class="aexp" style="font-size: 1.1rem;">exposing a shared filesystem</small>
+            </ul></small>
+          </div>
+        </section>
+
+        <!-- slide 3 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">01_CEPH: IMPLEMENTATION</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Deployment through Ansible Playbooks</li>
+              <small class="aexp" style="font-size: 1.1rem;">for a reproducible setup</small>
+              <li style="margin-bottom: 0.6rem; list-style: none;">&nbsp;&nbsp;└─&nbsp;<code>01_nodes.yml</code> creates and provisions 3 VMs with Vagrant</li>
+              <li style="margin-bottom: 0.6rem; list-style: none;">&nbsp;&nbsp;└─&nbsp;<code>02_bootstrap.yml</code> bootstraps the CEPH cluster with <code>cephadm</code> on the admin node</li>
+              <li style="margin-bottom: 0.6rem; list-style: none;">&nbsp;&nbsp;└─&nbsp;<code>03_expand.yml</code> expands the cluster linking other nodes</li>
+              <li style="margin-bottom: 0.6rem; list-style: none;">&nbsp;&nbsp;└─&nbsp;<code>04_fs.yml</code> creates the OSDs, CRUSH rule, replicated pool and filesystem</li>
+              <li style="margin-bottom: 0.6rem; list-style: none;">&nbsp;&nbsp;└─&nbsp;<code>05_mount.yml</code> generates and propagates secrets and configures fstab entry for automount</li>
+            </ul></small>
+          </div>
+        </section>
+
+        <!-- slide 4 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">01_CEPH: RESULT</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">3 VMs</li>
+              <small class="aexp" style="font-size: 1.1rem;">with attached HDD storage</small>
+              <li style="margin-bottom: 0.6rem;">CEPH cluster</li>
+              <small class="aexp" style="font-size: 1.1rem;">3 monitors, 3 OSDs (1 per node), 3 clients</small>
+              <li style="margin-bottom: 0.6rem;">CEPH dashboard</li>
+              <small class="aexp" style="font-size: 1.1rem;">showing cluster status, available on ceph0X:8443</small>
+              <li style="margin-bottom: 0.6rem;">CEPH filesystem</li>
+              <small class="aexp" style="font-size: 1.1rem;">automatically mounted on the clients</small>
+              <li style="margin-bottom: 0.6rem; list-style: none;"><code>192.168.132.81,192.168.132.82,192.168.132.83:/&nbsp;&nbsp;96G&nbsp;&nbsp;84M&nbsp;&nbsp;96G&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/testfs</code></li>
+            </ul></small>
+          </div>
+        </section>
+
+        <!-- slide 5 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">02_SLURM: GOAL</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Implementing a <i>debug</i> Quality of Service</li>
+              <small class="aexp" style="font-size: 1.1rem;">with high priority and resources constraints</small>
+              <li style="margin-bottom: 0.6rem;">Applying the QOS on jobs to ensure<br>priority escalation</li>
+              <small class="aexp" style="font-size: 1.1rem;">with the <code>--qos</code> flag when submitting a job</small>
+            </ul></small>
+          </div>
+        </section>
+
+        <!-- slide 6 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">02_SLURM: NEEDED CONFIGURATION</small>
+          <div class="slide">
+            <small style="margin-top: 3rem; display: flex; flex-direction: column; justify-content: center;">
+            <li class="aexp muted" style="margin-bottom: 0.6rem; list-style: none;">Creating a QOS</li>
+            <li style="margin-bottom: 0.6rem; list-style: none; font-size: 1.6rem;"><code># sacctmgr add qos zebra</code></li>
+            <li class="aexp muted" style="margin-bottom: 0.6rem; margin-top: 1rem; list-style: none;">Assigning a high priority to the QOS</li>
+            <li style="margin-bottom: 0.6rem; list-style: none; font-size: 1.6rem;"><code># sacctmgr modify qos zebra set priority=10000</code></li>
+            <li class="aexp muted" style="margin-bottom: 0.6rem; margin-top: 1rem; list-style: none;">Assigning user(s) to the QOS</li>
+            <li style="margin-bottom: 0.6rem; list-style: none; font-size: 1.6rem;"><code># sacctmgr modify user user00 set qos+=zebra</code></li>
+            <li style="margin-bottom: 0.6rem; list-style: none; font-size: 1.6rem;"><code># sacctmgr modify account root set qos+=zebra</code></li>
+            </small>
+          </div>
+        </section>
+
+        <!-- slide 7 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">02_SLURM: NEEDED CONFIGURATION</small>
+          <div class="slide">
+            <small class="aexp muted" >Adjusting priority settings</small>
+            <small class="aexp" style="font-size: 1.1rem;">via slurm.conf or ConfigMap</small>
+
+            <img src="img/slurmconf.png" style="width: 48rem;">
+          </div>
+        </section>
+
+        <!-- slide 8 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">02_SLURM: OUR CONFIGURATION</small>
+          <div class="slide">
+            # ZEBRA VS DEFAULT
+          </div>
+        </section>
+
+        <!-- slide 9 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">03_OFED: GOAL</small>
+          <div class="slide">
+            
+          </div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
