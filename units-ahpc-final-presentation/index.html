@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>HPC 2024</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">Advanced High Performance Computing 2024/25</small>
+            <h3 class="inter" style="margin-top: 2rem;">Multi-node GPU offloading<br>for solving Laplace's equation<br>using the Jacobi method</h3>
+            <small style="margin-top: 2.6rem;">Scientific and Data Intensive Computing &bull; Andrea Esposito [SM3600005]</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">BACKGROUND</small>
+          <div class="slide">
+            <small class="aexp">JACOBI METHOD FOR LAPLACE'S EQUATION ON A 2D GRID</small>
+            \[ \frac{\delta^2\phi}{\delta x^2} + \frac{\delta^2\phi}{\delta y^2} = 0 \] 
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Solving iteratively</li>
+              <small class="aexp">using second derivatives</small>
+              <li style="margin-bottom: 0.6rem;">Simulating heat spread on a 2-dimensional surface</li>
+              <small class="aexp">represented as a 2D matrix</small>
+              <li style="margin-bottom: 0.6rem;">Setting up boundary conditions</li>
+              <small class="aexp">initial gradient on the sides</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ALGORITHM</small>
+          <div class="slide">
+            <small class="aexp">UPDATING EACH CELL OF THE GRID</small>
+            <small class="aexp muted">GENERATING A NEW MATRIX</small>
+            \[ M_{i,j}^{new} = 0.25 \cdot (M_{i+1,j} + M_{i,j+1} + M_{i,j-1} + M_{i-1,j}) \] 
+            <small class="aexp">FOR A NUMBER OF ITERATIONS</small>
+            <img src="img/matrix.drawio.png" style="width: 24rem; margin-top: 4rem; margin-left: 2rem;"/>
+          </div>
+        </section>
+
+        <!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">PARALLELIZATION</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <small style="margin-top: 3rem; width: 50%;"><ul>
+                <li style="margin-bottom: 0.6rem;">Spawning processes on multiple nodes</li>
+                <small class="aexp">ONE PROCESS PER NODE</small>
+                <li style="margin-bottom: 0.6rem;">Distributing rows to compute across processes</li>
+                <small class="aexp">EQUALLY, ASSIGNING REMAINDER TO LAST RANK</small>
+                <li style="margin-bottom: 0.6rem;">Allocating and initializing the rank's portion on GPU</li>
+                <small class="aexp">ACCORDING TO INITIAL AND BOUNDARY CONDITIONS</small>
+                <li style="margin-bottom: 0.6rem;">Offloading the actual computation to GPU</li>
+                <small class="aexp">USING OPENMP TARGET CONSTRUCTS</small>
+              </ul></small> 
+              <div class="d-flex" style="margin-left: 2rem; width: 50%;">
+                <img src="img/ranks.drawio.png" style="width: 64rem;">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">COMMUNICATION</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <small style="margin-top: 3rem; width: 50%;"><ul>
+                <small class="aexp muted">ONCE</small>
+                <li style="margin-bottom: 0.6rem;">Creating a one-row shared window in each rank</li>
+                <span><code data-trim data-noescape>MPI_Win_create(T)</code></span><br>
+                <small class="aexp" style="margin-top: 0.6rem;">MIRRORING THE FIRST ROW OF THE RANK'S MATRIX</small>
+                <br><br>
+                <small class="aexp muted">AT EVERY ITERATION</small>
+                <li style="margin-bottom: 0.6rem;">Exchanging the bottom and top row between<br>neighboring ranks</li>
+                <img src="img/mpi_get_accumulate.png" style="margin: 1rem; width: 36rem;">
+                <!-- <small class="aexp" style="margin-top: 0.6rem;">OR WITH THE DUMMY RANK</small> -->
+                <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Updating the computed matrix with neighboring rows</li>
+                <small class="aexp">DATA ALREADY ON THE GPU</small>
+              </ul></small> 
+              <div class="d-flex" style="margin-left: 2rem; width: 50%;">
+                <img src="img/window.drawio.png" style="width: 64rem;">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">OFFLOADING</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <div class="d-flex" style="width: 50%;">
+                <small class="aexp">Allocating matrices and buffer arrays</small>
+                <img src="img/targetdata.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Initialization is performed on the device</li>
+                  <small class="aexp">NO VALUES COPIED IN</small>
+                  <li style="margin-bottom: 0.6rem;">Inter-process communication uses device pointers</li>
+                  <small class="aexp">EXCHANGED ROW IS ALREADY ON THE DEVICE</small>
+                  <li style="margin-bottom: 0.6rem;">Matrix $M$ contains the result of the latest iteration</li>
+                  <small style="margin-top: -0.5rem;" class="aexp">COPIED BACK TO THE HOST</small>
+                </ul></small> 
+              </div>
+              <div class="d-flex" style="width: 50%;">
+                <small class="aexp">PERFORMING COMPUTATION</small>
+                <img src="img/offloaded.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Distributing across teams of threads</li>
+                  <small class="aexp">OUTER LOOP SPLIT AMONG TEAMS</small>
+                  <li style="margin-bottom: 0.6rem;">Parallelizing across threads within each team</li>
+                  <small class="aexp">INNER LOOP SPLIT AMONG THREADS</small>
+                  <li style="margin-bottom: 0.6rem;">Allowing for SIMD vectorization</li>
+                  <small class="aexp">MULTIPLE ITERATIONS AT ONCE</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 7 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">SETUP: HARDWARE</small>
+          <div class="slide">
+            <small class="aexp">SETUP FOR TESTING</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">CINECA's LEONARDO Supercomputer</li>
+              <small class="aexp">using the booster partition</small>
+              <li style="margin-bottom: 0.6rem;">Up to 64 nodes</li>
+              <small class="aexp">Intel Xeon Platinum 8358 (32 cores each)</small>
+              <li style="margin-bottom: 0.6rem;">1 CPU core/node</li>
+              <small class="aexp">No CPU parallelization</small>
+              <li style="margin-bottom: 0.6rem;">1 GPU/node</li>
+              <small class="aexp">NVIDIA Tesla A100</small>
+              <li style="margin-bottom: 0.6rem;">16GBs RAM/node</li>
+              <small class="aexp">not memory-bound problem</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 8 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">SETUP: SOFTWARE</small>
+          <div class="slide">
+            <small class="aexp">SETUP FOR TESTING</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Compiled with OpenMPI/4.1.6</li>
+              <small class="aexp">using the NVHPC toolkit for NVIDIA offloading</small>
+              <li style="margin-bottom: 0.6rem;">Compiled with optimization options</li>
+            </ul></small> 
+            <code data-trim style="font-size: 2rem; margin: 2rem;">
+              -fopenmp -gpu=cc80 -target=gpu -gpu=nomanaged -mp=multicore,gpu -O3
+            </code>
+          </div>
+        </section>
+
+        <!-- slide 9 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">RESULTS</small>
+          <div class="slide">
+            <iframe id="times-graph" title="Time graph" style="width: 80%; height: 48rem;" src="jacobi_1d_gpu_shmem_np64.html"></iframe>
+          </div>
+        </section>
+
+        <!-- slide 10 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">RESULTS</small>
+          <div class="slide">
+            <iframe id="times-graph" title="Time graph" style="width: 80%; height: 48rem;" src="jacobi_1d_gpu_shmem_np64_components.html"></iframe>
+          </div>
+        </section>
+
+        <!-- slide 11 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ATTEMPTED IMPROVEMENTS: HYBRID APPROACH</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Aiming at exploiting CPU and GPU</li>
+              <small class="aexp">CPU CORES OTHERWISE IDLE</small>
+              <li style="margin-bottom: 0.6rem;">Multithreaded OpenMP solution with GPU offloading</li>
+              <small class="aexp">OFFLOADING ON MASTER THREAD, ALL OTHERS ARE WORKERS</small>
+              <li style="margin-bottom: 0.6rem;">MPI communication on master thread</li>
+              <small class="aexp">requesting <code>MPI_FUNNELED</code> level for multithreading support</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 12 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ATTEMPTED IMPROVEMENTS: HYBRID APPROACH</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <div class="d-flex flex-col" style="width: 50%; justify-content: center; align-items: center;">
+                <small class="aexp muted">FAILED ATTEMPT #1</small>
+                <img src="img/hybrid1.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Outer loop is serial</li>
+                  <small class="aexp">as each iteration depends on the previous</small>
+                  <li style="margin-bottom: 0.6rem;">Parallel region is initialized during each iteration</li>
+                  <small class="aexp">to parallelize CPU and GPU computation</small>
+                  <li style="margin-bottom: 0.6rem;">Significant initialization overhead</li>
+                  <small class="aexp">WRT COMPUTATION TIME</small>
+                </ul></small> 
+              </div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              <div class="d-flex flex-col" style="width: 50%; justify-content: center; align-items: center;">
+                <small class="aexp muted">FAILED ATTEMPT #2</small>
+                <img src="img/hybrid2.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Outer loop enclosed in parallel region</li>
+                  <small class="aexp">TO AVOID INITIALIZATION OVERHEAD</small>
+                  <li style="margin-bottom: 0.6rem;">MPI communication and GPU offloading on master</li>
+                  <small class="aexp">using <code>barrier</code>s for synchronization</small>
+                  <li style="margin-bottom: 0.6rem;">Wrong results because of out-of-order iterations</li>
+                  <small class="aexp">outer loop should be serial</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 13 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ATTEMPTED IMPROVEMENTS: HYBRID APPROACH</small>
+          <div class="slide">
+            <small class="aexp muted">DISCARDED SOLUTIONS</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Distributing MPI processes on cores</li>
+              <small class="aexp">SIGNIFICANT POTENTIAL COMMUNICATION OVERHEAD</small>
+              <li style="margin-bottom: 0.6rem;">Task-based parallelism with data dependency</li>
+              <small class="aexp">Not supported in GPU context</small>
+              <li style="margin-bottom: 0.6rem;">Multi-level parallelism with nested parallel regions</li>
+              <small class="aexp">Not supported on the tested platform</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 14 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ATTEMPTED IMPROVEMENTS: MULTIGPU APPROACH</small>
+          <div class="slide">
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Aiming at exploiting multiple GPUs</li>
+              <small class="aexp">UP TO 4 PER NODE</small>
+              <li style="margin-bottom: 0.6rem;">Data initialization on all GPUs</li>
+              <small class="aexp">TO AVOID DATA TRANSFER AND SYNCHRONIZATION OVERHEAD</small>
+              <li style="margin-bottom: 0.6rem;">Computation distributed equally between GPUs</li>
+              <small class="aexp">WITHIN EACH RANK (NODE)</small>
+            </ul></small> 
+          </div>
+        </section>
+
+        <!-- slide 15 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ATTEMPTED IMPROVEMENTS: HYBRID APPROACH</small>
+          <div class="slide">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <div class="d-flex flex-col" style="width: 50%; justify-content: center; align-items: center;">
+                <small class="aexp">MPI COMMUNICATION AND DATA MOVEMENT</small>
+                <img src="img/multigpu1.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">MPI calls using host pointers</li>
+                  <small class="aexp">device pointers not supported</small>
+                  <li style="margin-bottom: 0.6rem;">Data movement from host to device</li>
+                  <small class="aexp">after one-sided rank-to-rank communication</small>
+                  <li style="margin-bottom: 0.6rem;">Data movement from device to host</li>
+                  <small class="aexp">after end of computation to prepare data for MPI calls during next iteration</small>
+                </ul></small> 
+              </div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              <div class="d-flex flex-col" style="width: 50%; justify-content: center; align-items: center;">
+                <small class="aexp">OFFLOADING</small>
+                <img src="img/multigpu2.png" style="margin: 1rem; width: 36rem;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Asynchronous GPU offloading</li>
+                  <small class="aexp">using the <code>nowait</code> pragma</small>
+                  <li style="margin-bottom: 0.6rem;">Task synchronization to align all devices</li>
+                  <small class="aexp">using the <code>taskwait</code> pragma</small>
+                </ul></small> 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slide 16 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">RESULTS</small>
+          <div class="slide">
+            <iframe id="times-graph" title="Time graph" style="width: 80%; height: 48rem;" src="jacobi_1d_multigpu_shmem_np2_gpus4_components.html"></iframe>
+          </div>
+        </section>
+
+        <!-- slide 17 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.jpg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">THANK YOU FOR YOUR ATTENTION</small>
+          <div class="slide">
+          </div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
