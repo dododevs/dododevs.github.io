@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Thesis Proposals</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">Master in Scientific and Data-Intensive Computing</small>
+            <small class="aexp" style="margin-top: 2rem;">THESIS PROPOSAL</small>
+            <h4 class="inter" style="margin-top: 1rem;">Tecniche di Machine Learning<br>per la pianificazione ferroviaria</h4>
+            <small style="margin-top: 1.9rem;">Andrea Esposito &bull; 2025-08-21</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+            <small><ul>
+              <li style="margin-bottom: 0.6rem;">Generazione automatica di orari</li>
+              <small class="aexp">usando tecniche di Machine Learning</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Analisi/raccomandazione di orari (sub)ottimali</li>
+              <small class="aexp">a supporto della selezione manuale</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Classificazione di ritardi primari e secondari</li>
+              <small class="aexp">a partire dai dati di circolazione</small>
+            </ul></small>
+          </div>
+        </section>
+                  
+        <!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GENERAZIONE AUTOMATICA DI ORARI</small>
+          <div class="slide">
+            <small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-bottom: 1.2rem;">
+              <thead>
+                <tr style="text-align:left;">
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">INPUT</small></td>
+                  <td style="padding: 0.5rem;">Service Plan</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">OUTPUT</small></td>
+                  <td style="padding: 0.5rem;">Orario ottimale,<br>per esempio in forma di grafo,<br>considerati i vincoli imposti e gli obiettivi</td>
+                </tr>
+              </tbody>
+            </table></small>
+            <small style="margin-top: 2rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Sperimentando tecniche di ML</li>
+              <small class="aexp">REINFORCEMENT LEARNING, GRAPH NEURAL NETWORKS, AI GENERATIVA</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Comparabile con Algoritmi di Ottimizzazione</li>
+              <small class="aexp">PROGRAMMAZIONE INTERA ED EURISTICHE, NORMALMENTE UTILIZZATI</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Applicazione (relativamente) innovativa</li>
+              <small class="aexp">FOCUS SUL TIMETABLING, NON RESCHEDULING</small>
+            </ul></small>
+          </div>
+        </section>
+            
+        <!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ANALISI/RACCOMANDAZIONE DI ORARI</small>
+          <div class="slide">
+            <small><ul>
+              <li style="margin-bottom: 0.6rem;">Integrazione con ACO</li>
+              <small class="aexp">A SUPPORTO DELLA SELEZIONE DELL'ORARIO OTTIMALE</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Usando ML &rarr; Recommendation Systems</li>
+              <small class="aexp">PER "IMPARARE" DALLE SCELTE PASSATE</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Possibile arricchimento con dati di circolazione</li>
+              <small class="aexp">PER IDENTIFICARE CRITICITÀ</small>
+            </ul></small>
+          </div>
+        </section>
+
+        <!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">CLASSIFICAZIONE DI RITARDI</small>
+          <div class="slide">
+            <small><ul>
+              <li style="margin-bottom: 0.6rem;">Integrazione con dati di input per <i style="font-style: italic;">trenissimo</i></li>
+              <small class="aexp">PER ATTRIBUIRE CORRETTAMENTE RITARDI</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Usando Graph Neural Networks</li>
+              <small class="aexp">PER MODELLARE CARATTERISTICHE SPAZIO-TEMPORALI DELLA RETE,<br>GIÀ SPERIMENTATE PER LA PREDIZIONE</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Sfruttando dati di circolazione (e simulazione?)</li>
+              <small class="aexp">PER AFFINARE E TESTARE IL MODELLO</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Già sperimentato, su dati sintetici</li>
+              <small class="aexp">POSSIBILE VARIARE LA STRUTTURA DEL GRAFO E I DATI DI INPUT</small>
+            </ul></small>
+          </div>
+        </section>
+			  
+				<!-- slide 6 -->  
+			  <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">SOMMARIO</small>
+          <div class="slide flex-row" style="justify-content: center;">
+            <div style="width: 30%">
+              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+                <img src="img/graph.svg" style="width: 8rem;">
+                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">GENERAZIONE<br>ORARI</small>
+              </div>
+            </div>
+            <div style="width: 30%">
+              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+                <img src="img/timetable.svg" style="width: 8rem;">
+                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">ANALISI E<br>RACCOMANDAZIONE ORARI</small>
+              </div>
+            </div>
+            <div style="width: 30%">
+              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+                <img src="img/timelapse.svg" style="width: 8rem;">
+                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">CLASSICAZIONE<br>RITARDI</small>
+              </div>
+            </div>
+          </div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
