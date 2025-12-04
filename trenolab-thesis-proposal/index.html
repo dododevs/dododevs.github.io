@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>Thesis Proposals</title>
+		<title>Flipped MARL</title>
 
     <!-- styles -->
 		<link rel="stylesheet" href="dist/reset.css">
@@ -19,45 +19,15 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides">                  
         <!-- slide 1 -->
 				<section class="slide">
-          <div class="slide">
-            <small class="aexp muted">Master in Scientific and Data-Intensive Computing</small>
-            <small class="aexp" style="margin-top: 2rem;">THESIS PROPOSAL</small>
-            <h4 class="inter" style="margin-top: 1rem;">Tecniche di Machine Learning<br>per la pianificazione ferroviaria</h4>
-            <small style="margin-top: 1.9rem;">Andrea Esposito &bull; 2025-08-21</small>
-          </div>
-        </section>
-
-        <!-- slide 2 -->
-				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
             &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
             <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
           </div>
-          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
-          <div class="slide">
-            <small><ul>
-              <li style="margin-bottom: 0.6rem;">Generazione automatica di orari</li>
-              <small class="aexp">usando tecniche di Machine Learning</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Analisi/raccomandazione di orari (sub)ottimali</li>
-              <small class="aexp">a supporto della selezione manuale</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Classificazione di ritardi primari e secondari</li>
-              <small class="aexp">a partire dai dati di circolazione</small>
-            </ul></small>
-          </div>
-        </section>
-                  
-        <!-- slide 3 -->
-				<section class="slide">
-          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
-            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
-            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
-            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
-          </div>
-          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GENERAZIONE AUTOMATICA DI ORARI</small>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">OBIETTIVO</small>
           <div class="slide">
             <small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-bottom: 1.2rem;">
               <thead>
@@ -85,74 +55,337 @@
             </ul></small>
           </div>
         </section>
-            
-        <!-- slide 4 -->
+
+				<!-- slide 2 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
             &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
             <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
           </div>
-          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ANALISI/RACCOMANDAZIONE DI ORARI</small>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">METODO&nbsp;<span class="aexp muted">#1</span></small>
           <div class="slide">
-            <small><ul>
-              <li style="margin-bottom: 0.6rem;">Integrazione con ACO</li>
-              <small class="aexp">A SUPPORTO DELLA SELEZIONE DELL'ORARIO OTTIMALE</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Usando ML &rarr; Recommendation Systems</li>
-              <small class="aexp">PER "IMPARARE" DALLE SCELTE PASSATE</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Possibile arricchimento con dati di circolazione</li>
-              <small class="aexp">PER IDENTIFICARE CRITICITÀ</small>
+						<small class="aexp muted">GENERAZIONE DI UN GRAFO ORARIO<br>TRAMITE IA GENERATIVA</small>
+            <div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 50%; margin: 2rem;">
+								<div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+									<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">METODI SUPERVISED</small>
+									<small style="margin-top: 2rem;"><ul>
+										<li style="margin-bottom: 0.6rem;">Modelli di DL</li>
+										<small class="aexp">come GRAPHRNN, DEEPGMG</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Necessità di un dataset esteso e vario</li>
+										<small class="aexp">possibilità di generare dati sintetici più complessa</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Difficoltà di generalizzazione</li>
+										<small class="aexp">rischio di "imparare" la struttura di input senza astrarre caratteristiche</small>
+									</ul></small>
+								</div>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+									<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">METODI UNSUPERVISED</small>
+									<small style="margin-top: 2rem;"><ul>
+										<li style="margin-bottom: 0.6rem;">Setup di RL</li>
+										<small class="aexp">per la generazione iterativa del grafo, come GCPN</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Generazione guidata dalla funzione obiettivo</li>
+										<small class="aexp">possibilità di codificare vincoli e obiettivo/i</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Eccessiva complessità</li>
+										<small class="aexp">il modello deve imparare anche vincoli impliciti nell'input</small>
+									</ul></small>
+								</div>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">LITERATURE REVIEW</span>&nbsp;&bull;&nbsp;Line Planning Problem (LPP)</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">Nella sua forma più semplice, un <i>knapsack glorificato</i> per determinare<br>la configurazione di frequenza $f$ e capacità $c$ di linee predeterminate (sequenze di stazioni)<br>che minimizzi il costo per l’operatore e massimizzi il servizio ai viaggiatori<br>(calcolato a partire da una matrice di demand tra le coppie di stazioni). </li>
+							<small class="aexp">senza considerare fattibilità (vincoli operativi)</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Bussieck, Michael R., et al.</span>&nbsp;“Optimal Lines for Railway Systems.”, 1997
+							</li><small class="aexp">Due modelli: minimizzazione dei costi o massimizzazione dei collegamenti diretti</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">Goossens, Jan-Willem, et al.</span>&nbsp;“A Branch-and-Cut Approach for Solving Line Planning Problems.”, 2004
+							</li><small class="aexp">Minimizzazione dei costi tenendo conto del demand, considerando un solo tipo di treno/stazione<br>e predeterminando le linee da pianificare.</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">LITERATURE REVIEW</span>&nbsp;&bull;&nbsp;Line Planning Problem (LPP)</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">Più recentemente formulato come problema integrato al TTP, con il vantaggio di escludere<br>le soluzioni impossibili nella pratica. In più, LPP normalmente è basato su pianificazione periodica,<br>quindi il risultato del problema combinato è già una timetable periodica.<br>Le linee vengono construite come parte della soluzione.</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Yan, Fei, and Rob M. P. Goverde.</span>&nbsp;“Combined Line Planning and Train Timetabling for<br>Strongly Heterogeneous Railway Lines with Direct Connections”., 2019
+							</li></ul>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Zhang, Chuntian, et al.</span>&nbsp;“Integrated Optimization of Line Planning and Train Timetabling<br>in Railway Corridors with Passengers’ Expected Departure Time Interval.”, 2021
+							</li></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">Huang, Zhaocha, and Han Zheng.</span>&nbsp;“Integrated Line Planning and Timetable Scheduling<br>for Railways Considering the Dynamics and Uncertainty of Passenger Demand.”, 2025
+							</li></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">LITERATURE REVIEW</span>&nbsp;&bull;&nbsp;Train Timetabling Problem (TTP)</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">Problema combinatorio per determinare i treni da pianificare<br>e il loro effettivo orario di esercizio. Vari obiettivi possibili,<br>a volte trattati come ottimizzazione multi-obiettivo.</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Brännlund, U., et al.</span>&nbsp;“Railway Timetabling Using Lagrangian Relaxation.”, 1998
+							</li><small class="aexp">introduce la divisione della rete in sezioni di blocco</small></ul>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">Generalmente, nella formulazione classica i treni sono pianificati su<br>una sola linea e seguono lo stesso percorso, potenzialmente saltando fermate<br>e sorpassandosi in corrispondenza delle stazioni.</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">LITERATURE REVIEW</span>&nbsp;&bull;&nbsp;Train Timetabling Problem (TTP)</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">Più recentemente formulato su più linee, con diverse euristiche associate,<br>spesso risolto in più passaggi ibridi (solver + euristica), con diversi obiettivi.</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Polinder, Gert-Jaap, et al.</span>&nbsp;“An Iterative Heuristic for Passenger-Centric Train Timetabling<br>with Integrated Adaption Times.”, 2020
+							</li><small class="aexp">definisce e ottimizza il tempo percepito di attesa</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Martin-Iradi, Bernardo, and Stefan Ropke.</span>&nbsp;“A Column-Generation-Based Matheuristic<br>for Periodic and Symmetric Train Timetabling with Integrated Passenger Routing.”, 2020
+							</li><small class="aexp">integra LPP, periodicità e simmetria risolvendo su linee bidirezionali con euristica</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 7 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">POSSIBILI ESPANSIONI</span>&nbsp;&bull;&nbsp;Train Timetabling Problem (TTP)</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Riduzione dei tempi di risoluzione</li>
+              <small class="aexp">con euristiche, rilassamenti, riformulazioni</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Integrazione del demand e/o di più obiettivi</li>
+              <small class="aexp">potenzialmente in conflitto tra loro</small>
+              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Resilienza dell’orario generato</li>
+              <small class="aexp">con formulazione stocastica</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Separare training ed esecuzione</li>
+              <small class="aexp">per determinate condizioni dello scenario,<br>per poter riutilizzare il modello su più istanze</small>
             </ul></small>
           </div>
         </section>
 
-        <!-- slide 5 -->
+				<!-- slide 8 -->
 				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
             &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
             <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
           </div>
-          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">CLASSIFICAZIONE DI RITARDI</small>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">LITERATURE REVIEW</span>&nbsp;&bull;&nbsp;Train Timetabling Problem (TTP)</small>
           <div class="slide">
-            <small><ul>
-              <li style="margin-bottom: 0.6rem;">Integrazione con dati di input per <i style="font-style: italic;">trenissimo</i></li>
-              <small class="aexp">PER ATTRIBUIRE CORRETTAMENTE RITARDI</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Usando Graph Neural Networks</li>
-              <small class="aexp">PER MODELLARE CARATTERISTICHE SPAZIO-TEMPORALI DELLA RETE,<br>GIÀ SPERIMENTATE PER LA PREDIZIONE</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Sfruttando dati di circolazione (e simulazione?)</li>
-              <small class="aexp">PER AFFINARE E TESTARE IL MODELLO</small>
-              <li style="margin-bottom: 0.6rem; margin-top: 1rem;">Già sperimentato, su dati sintetici</li>
-              <small class="aexp">POSSIBILE VARIARE LA STRUTTURA DEL GRAFO E I DATI DI INPUT</small>
-            </ul></small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">Esistono diversi approcci di RL per la risoluzione del TTP che puntano a risolvere<br>alcuni dei problemi che sono emersi. Usato molto più frequentemente per rescheduling<br>(online, real-time, a livello del singolo movimento e solitamente a livello di stazione o zona ristretta)<br>per via dei tempi di esecuzione ridotti dopo il training, viene usato anche per il timetabling<br>per la possibilità di modellare i vincoli di infrastruttura ed esercizio e i diversi obiettivi<br>da ottimizzare attraverso la funzione di reward.</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Wu, Tao, et al.</span>&nbsp;“A Deep Reinforcement Learning Approach for Optimal<br>Scheduling of Heavy-Haul Railway”, 2023
+							</li><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Khadilkar, Harshad.</span>&nbsp;“A Scalable Reinforcement Learning Algorithm for<br>Scheduling Railway Lines.”, 2019
+							</li><small class="aexp">singolo agente che gestisce sequenzialmente i treni sulla rete</small></ul>
+							
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Li, Wenqing, and Shaoquan Ni.</span>&nbsp;“Train Timetabling with the General Learning Environment<br>and Multi-Agent Deep Reinforcement Learning.”, 2022
+							</li><small class="aexp">ogni treno è controllato da un agente, con training centralizzato<br>ed esecuzione decentralizzata</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">Schneider, Stefan, et al.</span>&nbsp;“Intelligent Railway Capacity and Traffic Management<br>Using Multi-Agent Deep Reinforcement Learning.”, 2024
+							</li><small class="aexp">multi-agente su scala microscopica, scenario valutato tramite simulazione</small></ul>
+						</ul></small>
           </div>
         </section>
-			  
-				<!-- slide 6 -->  
-			  <section class="slide">
+
+				<!-- slide 9 -->
+				<section class="slide">
           <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
             <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
           </div>
-          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">SOMMARIO</small>
-          <div class="slide flex-row" style="justify-content: center;">
-            <div style="width: 30%">
-              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
-                <img src="img/graph.svg" style="width: 8rem;">
-                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">GENERAZIONE<br>ORARI</small>
-              </div>
-            </div>
-            <div style="width: 30%">
-              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
-                <img src="img/timetable.svg" style="width: 8rem;">
-                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">ANALISI E<br>RACCOMANDAZIONE ORARI</small>
-              </div>
-            </div>
-            <div style="width: 30%">
-              <div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
-                <img src="img/timelapse.svg" style="width: 8rem;">
-                <small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 2rem;">CLASSICAZIONE<br>RITARDI</small>
-              </div>
-            </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="aexp muted">RL</span>&nbsp;&bull;&nbsp;Train Timetabling Problem (TTP)</small>
+          <div class="slide">
+						<img src="img/rl.png" style="height: 24rem;"/>
+						<small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-top: 1.2rem;">
+							<thead>
+								<tr style="text-align:left;">
+									<td style="padding: 0.5rem;"></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">RL</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">MARL</small></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">ENVIRONMENT</small></td>
+									<td style="padding: 0.5rem;">Infrastruttura</td>
+									<td style="padding: 0.5rem;">Infrastruttura</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">AGENTE/I</small></td>
+									<td style="padding: 0.5rem;">Gestore della circolazione</td>
+									<td style="padding: 0.5rem;">Treni in circolazione</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">AZIONI</small></td>
+									<td style="padding: 0.5rem;">Spostare, fermare</td>
+									<td style="padding: 0.5rem;">Avanzare, fermarsi</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">STATO</small></td>
+									<td style="padding: 0.5rem;">Stato della rete</td>
+									<td style="padding: 0.5rem;">Osservazione della rete</td>
+								</tr>
+							</tbody>
+						</table></small>
+          </div>
+        </section>
+
+				<!-- slide 10 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">METODO&nbsp;<span class="aexp muted">#2</span>:&nbsp;Flipped MARL</small>
+          <div class="slide">
+						<img src="img/rl.png" style="height: 24rem;"/>
+						<small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-top: 1.2rem;">
+							<thead>
+								<tr style="text-align:left;">
+									<td style="padding: 0.5rem;"></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">TRAIN-DRIVEN MARL</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">SECTION-DRIVEN MARL</small></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">ENVIRONMENT</small></td>
+									<td style="padding: 0.5rem;">Infrastruttura</td>
+									<td style="padding: 0.5rem;">Infrastruttura</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">AGENTE/I</small></td>
+									<td style="padding: 0.5rem;">Treni in circolazione</td>
+									<td style="padding: 0.5rem;">Sezioni di blocco e stazioni</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">AZIONI</small></td>
+									<td style="padding: 0.5rem;">Avanzare, fermarsi</td>
+									<td style="padding: 0.5rem;">Liberare, trattenere,<br>generare, eliminare</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">STATO</small></td>
+									<td style="padding: 0.5rem;">Osservazione della rete</td>
+									<td style="padding: 0.5rem;">Osservazione del dintorno</td>
+								</tr>
+							</tbody>
+						</table></small>
+          </div>
+        </section>
+
+				<!-- slide 11 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">METODO&nbsp;<span class="aexp muted">#2</span>:&nbsp;RATIO</small>
+          <div class="slide">
+						<div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 55%; margin-right: 3rem;">
+								<img src="img/blocsecmarl.drawio.png" style="height: 24rem;"/>
+							</div>
+							<div style="width: 45%;">
+								<small style="margin-top: 2rem;"><ul>
+									<li style="margin-bottom: 0.6rem;">Sperimentazione di un nuovo modello</li>
+									<small class="aexp">più simile alla realtà</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Osservazioni più semplici</li>
+									<small class="aexp">Posizione fissa, intorno constante</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Migliore scalabilità</li>
+									<small class="aexp">rispetto ai treni e non all'infrastruttura</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Migliore modularità</li>
+									<small class="aexp">i cambiamenti vengono apportati<br>all'infrastruttura e non ai treni</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Complessità graduale</li>
+									<small class="aexp">per iterazioni successive</small>
+								</ul></small>
+							</div>
+						</div>
+          </div>
+        </section>
+				
+				<!-- slide 12 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">METODO&nbsp;<span class="aexp muted">#2</span>:&nbsp;PROSSIMI PASSI</small>
+          <div class="slide">
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">Implementazione minima</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								Environment semplificato e degli stati
+							</li><small class="aexp">singola linea, due stazioni connesse</small>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Funzione reward
+							</li><small class="aexp">penalità per sovrapposizioni, ricompensa per<br>corretto comportamento</small></ul>
+							<li style="margin-bottom: 0.6rem; margin-top: 2rem;">Costruzione della policy</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								Q-Learning, mantenendo l'esito di ogni episodio<br>e le azioni scelte in ogni stato
+							</li><small class="aexp">basata solo sullo stato della sezione corrente e successiva</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								Altre policy indipendenti o cooperative 
+							</li><small class="aexp">SINGLE POLICY, VDN, QMIX</small></ul>
+							<li style="margin-bottom: 0.6rem; margin-top: 2rem;">Miglioramento modello</li>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								Modellazione rete come grafo
+							</li><small class="aexp">con più linee incrociate e più sezioni tra le stazioni,<br>stazioni con più binari e altro</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								Evoluzione della policy per considerare i ditorni
+								<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+									<span class="muted">Weil, et al.</span>&nbsp;“Towards Generalizability of Multi-Agent Reinforcement Learning<br>in Graphs with Recurrent Message Passing”, 2024
+								</li></ul>
+							</li><small class="aexp"></small></ul>
+						</ul></small>
           </div>
         </section>
 			</div>
