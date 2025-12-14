@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Bye!</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	
+		<script type="text/javascript" src="dist/js/mapdata.js"></script>		
+    <script type="text/javascript" src="dist/js/countrymap.js"></script>
+		<script>
+			setInterval(function() {
+        document.querySelector(`a[href="https://simplemaps.com"]`).remove();
+      }, 250);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">   
+				<!-- slide 1 -->     
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">Vi ses!</small>
+            <h4 class="inter" style="margin-top: 1rem;">Internship Wrap-Up :(</h4>
+            <small style="margin-top: 1.9rem;">Andrea Esposito&nbsp;&nbsp;&bull;&nbsp;&nbsp;2025-12-15</small>
+          </div>
+        </section>
+
+				<!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">ABOUT ME (at last)</small>
+          <div class="slide">
+            <div class="flex-row" style="align-items: center">
+              <div style="width: 50%;">
+                <small style="margin-top: 3rem;"><ul>
+                  <li style="margin-bottom: 0.6rem;">Born and raised in Puglia • Italy</li>
+                  <small class="aexp" style="font-size: 1.1rem;">across Taranto and Bari</small>
+                  <li style="margin-bottom: 0.6rem;">Bachelor's in Bolzano-Bozen</li>
+                  <small class="aexp" style="font-size: 1.1rem;">in the Alps at the austrian border</small>
+                  <li style="margin-bottom: 0.6rem;">Master's in Trieste</li>
+                  <small class="aexp" style="font-size: 1.1rem;">in the north-east</small>
+									<li style="margin-bottom: 0.6rem;">Master's Internship in Lund</li>
+                  <small class="aexp" style="font-size: 1.1rem;"></small>
+                </ul></small>
+              </div>
+              <div style="width: 8rem;">&nbsp;</div>
+              <div style="width: 64rem;" class="flex-col">
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+				<!-- slide 3 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">WHAT I'VE BEEN UP TO</small>
+          <div class="slide">
+            <small class="aexp">TRAINS!</small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Master's Internship</li>
+              <small class="aexp" style="font-size: 1.1rem;">in the Railway Group</small>
+              <li style="margin-bottom: 0.6rem;">Came for my thesis, stayed for the <s style="vertical-align: bottom;">fika</s> projects</li>
+              <small class="aexp" style="font-size: 1.1rem;">working alongside Prof. Palmqvist and PhDs</small>
+              <li style="margin-bottom: 0.6rem;">Applying theoretical knowledge to real problems</li>
+              <small class="aexp" style="font-size: 1.1rem;">Machine Learning, programming, statistics & other</small>
+              <li style="margin-bottom: 0.6rem;">Getting to know new people and places</li>
+              <small class="aexp" style="font-size: 1.1rem;">Living and exploring the nordics</small>
+            </ul></small>
+          </div>
+        </section>
+
+				<!-- slide 4 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+					<small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">WHAT I'VE LEARNT</small>
+          <div class="slide">
+						<small class="">From the very beginning, how railways are...</small>
+						<small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">designed</li>
+              <li style="margin-bottom: 0.6rem;">built</li>
+              <li style="margin-bottom: 0.6rem;">operated</li>
+							<div class="fragment fade-in">
+								<li style="margin-bottom: 0.6rem;">bad</li>
+							</div>
+            </ul></small>
+						<div class="fragment fade-in" style="margin-top: 2rem;">
+							<small class="">...and what efforts are in place to make them <b>less bad</b></small>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 5 -->
+        <section class="slide" style="background-image: url('img/lkmap.png'); background-size: cover; background-position: 10%;">
+          <div class="flex-row" style="position: absolute; bottom: 8rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+					<small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">WHAT I'VE DONE</small>
+          <div class="slide">
+						<small class="aexp"></small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Understanding and analyzing data</li>
+              <small class="aexp" style="font-size: 1.1rem;">a lot of data ≠ good data</small>
+              <li style="margin-bottom: 0.6rem;">Data processing and visualization</li>
+              <small class="aexp" style="font-size: 1.1rem;">making sense of strings and numbers</small>
+              <li style="margin-bottom: 0.6rem;">Giving my own twist</li>
+              <small class="aexp" style="font-size: 1.1rem;">other/new methods of solving problems</small>
+							<li style="margin-bottom: 0.6rem;">Contributing to scientific work 🤞</li>
+              <small class="aexp" style="font-size: 1.1rem;">to be presented & published</small>
+            </ul></small>
+          </div>
+        </section>
+
+				<!-- slide 6 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+					<small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">WHAT LUND HAS TAUGHT ME</small>
+          <div class="slide">
+						<small class="aexp"></small>
+            <small style="margin-top: 3rem;"><ul>
+							<div class="fragment fade-in">
+								<li style="margin-bottom: 0.6rem;">Anytime is party time</li>
+							</div>
+							<div class="fragment fade-in">
+								<li style="margin-bottom: 0.6rem;">If someone bothers you, leave a note</li>
+							</div>
+							<div class="fragment fade-in">
+								<li style="margin-bottom: 0.6rem;"><i>No news</i></li>
+								<small class="aexp" style="font-size: 1.1rem;">- any monday meeting (2025)</small>
+							</div>
+							<div class="fragment fade-in">
+								<li style="margin-bottom: 0.6rem;">Work environment is not just Joacim's thing</li>
+							</div>
+            </ul></small>
+          </div>
+        </section>
+
+				<!-- slide 7 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+					<small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">WHERE I'M HEADED NEXT</small>
+          <div class="slide">
+						<small class="aexp"></small>
+            <small style="margin-top: 3rem;"><ul>
+              <li style="margin-bottom: 0.6rem;">Christmas and New Year's</li>
+              <small class="aexp" style="font-size: 1.1rem;">in Italy with family & friends</small>
+              <li style="margin-bottom: 0.6rem;">Thesis and graduation</li>
+              <small class="aexp" style="font-size: 1.1rem;">hopefully done by March</small>
+              <li style="margin-bottom: 0.6rem;">Finding my path in transportation research</li>
+              <small class="aexp" style="font-size: 1.1rem;">TBD</small>
+            </ul></small>
+          </div>
+        </section>
+
+				<!-- slide 8 -->
+        <section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img src="img/nuovo-logo_units.png" style="height: 2rem;"/>
+          	&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;&nbsp;
+            <img src="img/Lunds_universitet.svg" style="height: 5.5rem;"/>
+          </div>
+					<small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">VI SES!</small>
+          <div class="slide">
+						<small class="aexp">Tack för allt</small>
+          </div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
