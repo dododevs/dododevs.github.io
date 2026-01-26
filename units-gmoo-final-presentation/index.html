@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Airplane Boarding Optimization</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">Global and Multi-Objective Optimization<br>Final Project</small>
+            <!-- <small class="aexp" style="margin-top: 2rem;">PAPER IMPLEMENTATION</small> -->
+            <h4 class="inter" style="margin-top: 1rem;">Airplane Boarding Optimization<br>using GA and NSGA</h4>
+            <small style="margin-top: 1.9rem;">Scientific and Data Intensive Computing &bull; Andrea Esposito [SM3600005]</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">PROBLEM and GOALS</small>
+          <div class="slide">
+						<div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+							<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">BASED ON</small>
+							<small class="muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1.5rem; font-style: italic;">Mehta, A. (2007). Novel Approaches to Airplane Boarding. UMAPJournal.</small>
+							<small style="margin-top: 2rem;"><ul>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Boarding sequence matters for boarding time</li>
+								<small class="aexp muted">BOARDING IS A SERIAL PROCESS</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Airlines rely on quick boarding for fast turnaround</li>
+								<small class="aexp muted">contributes to passenger satisfaction</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Economic interest imposes constraints</li>
+								<small class="aexp muted">priority boarding, group preference, luggage...</small>
+							</ul></small>
+						</div>
+          </div>
+        </section>
+
+        <!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">STRATEGY AND BASELINES</small>
+          <div class="slide">
+						<div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+							<small style="margin-top: 2rem;"><ul>
+								<li style="margin-bottom: 0.6rem;">Single-objective sequence permutation problem</li>
+								<small class="aexp muted">if applied to single seat reordering, ignoring constraints</small>
+								<li style="margin-bottom: 0.6rem;">Common comparison baselines</li>
+								<small class="aexp muted">widely used naive methods</small>
+								<ul>
+									<li style="margin-bottom: 0.6rem;">Random</li>
+									<small class="aexp muted">no predetermined sequence</small>
+									<li style="margin-bottom: 0.6rem;">Window-Middle-Aisle</li>
+									<small class="aexp muted">in order to minimize seat reshuffling</small>
+									<li style="margin-bottom: 0.6rem;">Back to Front</li>
+									<small class="aexp muted">in order to minimize queueing</small>
+									<li style="margin-bottom: 0.6rem;">Steffen method</li>
+									<small><span class="muted">Steffen, Jason H.</span>&nbsp;“Optimal Boarding Method for Airline Passengers.”, 2008</small>
+									<br>
+									<small class="aexp muted">Optimized WMA + B2F, evenly spacing rows</small>
+								</ul>
+							</ul></small>
+						</div>
+          </div>
+        </section>
+
+        <!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">SIMULATION</small>
+          <div class="slide">
+						<small class="aexp muted">simulating boarding with a simple<br>row-by-row stochastic process</small>
+						<div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 50%; margin: 2rem;">
+								<img src="img/simulator.drawio.png" style="width: 36rem; margin-top: 4rem;"/>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-col">
+									<small><ul>
+										<li style="margin-bottom: 0.6rem;">Every row of seats is a row processor</li>
+										<small class="aexp">processing incoming passengers</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Each processor has a waiting queue</li>
+										<small class="aexp">passengers standing in the space between two rows</small>
+										<li style="margin-bottom: 1rem; margin-top: 1rem;">Upon processing, four possible actions:</li>
+										<ul>
+											<li style="margin-bottom: 0.6rem;">Pass</li>
+											<small class="aexp muted">if not right row, enqueue to next processor</small>
+											<li style="margin-bottom: 0.6rem;">Fumble</li>
+											<small class="aexp muted">small probability of wasting a cycle</small>
+											<li style="margin-bottom: 0.6rem;">Reshuffle (1 cycle per collision)</li>
+											<small class="aexp muted">if correct row but collisions with seated passengers</small>
+											<li style="margin-bottom: 0.6rem;">Stow ($n$ cycles given by Weibull distribution)</li>
+											<small class="aexp muted">if passenger is travelling with carry-on</small>
+											<li style="margin-bottom: 0.6rem;">Sit</li>
+											<small class="aexp muted">finally, after everything else is dealt with</small>
+										</ul>
+									</ul></small> 
+								</div>
+							</div>
+						</div>
+          </div>
+        </section>
+
+        <!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GA CYCLE</small>
+          <div class="slide">
+            <img src="img/gacycle.drawio.png" style="width: 52rem; margin-top: 4rem;"/>
+						<small style="margin-top: 2.5rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">Evaluating boarding sequence via simulation</li>
+							<small class="aexp">obtaining cycles per passenger</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Objective is minimized</li>
+							<small class="aexp">smaller fitness = shorter boarding time</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Termination on number of evolved generations</li>
+							<small class="aexp">usually 2048 generations</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Cycle crossover and swap mutation</li>
+							<small class="aexp">preserving sequence validity</small>
+						</ul></small> 
+          </div>
+        </section>
+
+				<!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GA PARAMETERS</small>
+          <div class="slide">
+            <div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+							<small style="margin-top: 2rem;"><ul>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Implementation in C++</li>
+								<small class="aexp muted">with parallel fitness evaluation using openmp</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Population size of $128$</li>
+								<small class="aexp muted">in line with papers</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Sequence of $180$ passengers in $30$ rows</li>
+								<small class="aexp muted">the seat configuration of most narrow-body aircraft</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Evolution of $1024$ generations</li>
+								<small class="aexp muted">over multiple conditions</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">$p_{cross} = 0.1$, $p_{mut} \in [0.1, .., 0.9]$</li>
+								<small class="aexp muted">investigating the best parameter configuration</small>
+							</ul></small>
+						</div>
+          </div>
+        </section>
+
+        <!-- slide 7 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GA RESULTS</small>
+          <div class="slide">
+            <iframe
+							id="gaplot"
+							title="GA results"
+							width="1584"
+							height="768"
+							src="/img/ga.html">
+						</iframe>
+          </div>
+        </section>
+
+				<!-- slide 8 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">TOWARDS GROUP BOARDING</small>
+          <div class="slide">
+            <div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+							<small style="margin-top: 2rem;"><ul>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Good results possible</li>
+								<small class="aexp muted">better than known baselines</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Unrealistic setting</li>
+								<small class="aexp muted">infeasible in a real scenario</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Hard constraint: boarding groups</li>
+								<small class="aexp muted">practical feasibility and economic interest</small>
+							</ul></small>
+							<img>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 9 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">GROUP BOARDING</small>
+          <div class="slide">
+            <div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+							<img src="img/groups.drawio.png" style="width: 52rem; margin-top: 4rem;"/>
+							<small style="margin-top: 2rem;"><ul>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Similar setting to GA</li>
+								<small class="aexp muted">same evolution loop</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Population is now a sequence of group assignments</li>
+								<small class="aexp muted">each gene is a specific seat, assigned to a boarding group</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Fitness evaluation rebuilds the sequence</li>
+								<small class="aexp muted">ordering by group, shuffling within each group</small>
+								<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">One-point crossover and swap mutation</li>
+								<small class="aexp muted">no permutation validity constraint</small>
+							</ul></small>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 10a -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">2-GROUP GA RESULTS</small>
+          <div class="slide">
+						<iframe
+							id="2groupsplot"
+							title="2-group GA results"
+							width="1584"
+							height="768"
+							src="/img/groups.html">
+						</iframe>
+          </div>
+        </section>
+
+				<!-- slide 10b -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">LUGGAGE-FIRST POLICY</small>
+          <div class="slide">
+						<div class="flex-row" style="justify-content: space-between; align-items: center;">
+							<div style="width: 50%; margin: 2rem; align-items: center; justify-content: center;">
+								<iframe
+									id="luggage"
+									title="Luggage GA results"
+									width="600"
+									height="600"
+									src="/img/luggage.html">
+								</iframe>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">$32$ runs of fully evolved population</li>
+									<small class="aexp muted">evaluating a population with a predetermined luggage distribution</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">$~90\%$ of carry-on carriers boarded first</li>
+									<small class="aexp muted">in line with airline policies</small>
+								</ul></small>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 11 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"></small>
+          <div class="slide">
+						<div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">HOW MANY BOARDING GROUPS?</small>
+							<div style="margin-top: auto; margin-bottom: auto;" class="flex-col">
+								<small style="margin-top: 2rem;"><ul>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Keeping low number of boarding groups</li>
+									<small class="aexp muted">easier logistics, passenger satisfaction</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Minimizing boarding time</li>
+									<small class="aexp muted">faster boarding, better turnaround time</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Good PoC for multi-objective optimization</li>
+									<small class="aexp muted">although few boarding groups configurations</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">NSGA II</li>
+									<small class="aexp muted">well suited for optimizing two objectives</small>
+								</ul></small>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 12 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">2-GROUP GA RESULTS</small>
+         	<div class="slide">
+						<div class="flex-row" style="justify-content: space-between; align-items: center;">
+							<div style="width: 50%; margin: 2rem; align-items: center; justify-content: center;">
+								<iframe
+									id="pareto"
+									title="NSGA results"
+									width="600"
+									height="600"
+									src="/img/pareto.html">
+								</iframe>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">$N = 8$ maximum number of groups</li>
+									<small class="aexp muted">for a more realistic setting</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Same setting as group GA</li>
+									<small class="aexp muted">rebuilding sequence from group assignments</small>
+									<li style="margin-bottom: 0.6rem; margin-top: 0.6rem;">Roughly $25\%$ boarding with $8$ groups wrt $2$</li>
+									<small class="aexp muted">confirming faster boarding hypothesis</small>
+								</ul></small>
+							</div>
+						</div>
+          </div>
+				</section>
+
+				<!-- slide 13 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">CONCLUSIONS</small>
+          <div class="slide">
+						<small style="margin-top: 2.5rem;"><ul>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Good results with GA</li>
+							<small class="aexp">optimizing passenger sequence</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Better than theoretical baselines</li>
+							<small class="aexp">while practically infeasible</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">EA for better trade-offs</li>
+							<small class="aexp">optimizing other objectives with constraints</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Different encodings and algorithms</li>
+							<small class="aexp">e.g. rule-based (GP, policy optimization...)</small>
+						</ul></small> 
+          </div>
+        </section>
+
+				<!-- slide 14 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;">THANK YOU FOR YOUR ATTENTION</small>
+          <div class="slide">
+          </div>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
