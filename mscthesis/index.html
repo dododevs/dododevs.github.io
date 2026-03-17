@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>ttp_marl_blocsec</title>
+
+    <!-- styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="dist/presentation.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&family=Livvic:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- slide 1 -->
+				<section class="slide">
+          <div class="slide">
+            <small class="aexp muted">MASTER'S THESIS</small>
+            <h4 class="inter" style="margin-top: 1rem;">Solving the Train Timetabling Problem<br>using Multi-Agent Reinforcement Learning:<br>an Infrastructure-Centric Approach</h4>
+            <small style="margin-top: 1.9rem;">Scientific and Data Intensive Computing&nbsp;2024/25 &bull; Andrea Esposito [SM3600005]</small>
+          </div>
+        </section>
+
+        <!-- slide 2 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;railway planning</small>
+          <div class="slide flex-row">
+            <small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">Railway is a private-driven competitive sector</li>
+							<small class="aexp muted">strong economic interest</small>
+							<li style="margin-bottom: 0.6rem;">Demand is rising</li>
+							<small class="aexp muted">fostered by sustainability and multimodality</small>
+							<li style="margin-bottom: 0.6rem;">Intrinsic duality: shared infrastructure</li>
+							<small class="aexp muted">TOCs subjected to physical and logistical constraints by IM</small>
+							<li style="margin-bottom: 0.6rem;">Effective planning is key</li>
+							<small class="aexp muted">to maximise presence and profit and coordinate competitors</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 3 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;railway planning</small>
+          <div class="slide" style="justify-items: left; align-items: left;" >
+            <small style="margin-top: 2rem; justify-items: left;"><ul>
+							<div>
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">STRATEGIC LEVEL</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Network design, line planning</li>
+							<small class="aexp muted">high-level expansions or modification</small>
+							<div style="margin-top: 2rem;">
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">TACTICAL LEVEL</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Timetabling, crew and rolling stock scheduling</li>
+							<small class="aexp muted">yearly resource allocation and train planning producing passenger timetable</small>
+							<div style="margin-top: 2rem;">
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">OPERATIONAL LEVEL</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Rescheduling, vehicle routing, dispatching</li>
+							<small class="aexp muted">short-term planned service adaptation</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 4 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;LPP and TTP</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">LPP</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">LINE PLANNING PROBLEM</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Bespoke knapsack problem: find the optimal configuration of capacity and frequency for<br>minimising cost while maximising service to passengers according to demand between stations.
+							</li>
+							<small class="aexp">disregarding feasibility (operational constraints)</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">M. R. Bussieck et al.</span>&nbsp;“Optimal Lines for Railway Systems”, 1997<br><span class="italic" style="font-size: 1.2rem">European Journal of Operational Research 96, 54-63</span>
+							</li><small class="aexp">two models: cost minimisation or direct connections maximisation</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">J.-W. Goossens et al.</span>&nbsp;“A Branch-and-Cut Approach for Solving Line Planning Problems.”, 2004<br><span class="italic" style="font-size: 1.2rem">Transportation Science 38, 379-393</span>
+							</li><small class="aexp">cost minimisation with constrained demand, one train type, predetermined rides</small></ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem; margin-top: 1rem;">
+								Answers the questions
+								<div style="background: #454545; padding: 1rem; margin: 1rem; border-radius: 0.2rem; font-weight: 700" class="italic">What lines to operate? How frequently? With what capacity?</div>
+								to serve all passengers with the minimum cost.
+							</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 5 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;LPP and TTP</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">TTP</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">TRAIN TIMETABLING PROBLEM</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Combinatorial problem to determine departures and arrivals of a predetermined set of trains,<br>usually on a single line, with varying objectives
+							</li>
+							<small class="aexp">e.g. minimising travel time, cost, energy, sometimes tackled as multi-objective</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">M. Carey, D. Lockwood</span>&nbsp;“A Model, Algorithms and Strategy for Train Pathing”, 1995<br><span class="italic" style="font-size: 1.2rem">Journal of the Operational Research Society 46, 988-1005</span>
+							</li><small class="aexp">first big-m formulation</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">U. Brännlund et al.</span>&nbsp;“Railway Timetabling Using Lagrangian Relaxation.”, 1998<br><span class="italic" style="font-size: 1.2rem">Transportation Science 32, 358-369</span>
+							</li><small class="aexp">first time-indexed formulation, block sections and time intervals</small></ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem; margin-top: 1rem;">
+								Answers the question
+								<div style="background: #454545; padding: 1rem; margin: 1rem; border-radius: 0.2rem; font-weight: 700" class="italic">What time should trains arrive and depart to and from stations?</div>
+								to minimise passenger travel time, given physical and logistical constraints.
+							</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 6 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;LPP and TTP</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">LPP + TTP</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">INTEGRATED, INDUSTRY ORIENTED</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Iterative or truly integrated solutions to find <b>valid</b> optimal line configurations,<br>generating the lines and the corresponding (usually <b>periodic</b>) timetables 
+							</li>
+							<small class="aexp">LPP is inherently periodic, TTP ensures feasibility</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">M. Kaspi, T. Raviv</span>&nbsp;“Service-Oriented Line Planning and Timetabling for Passenger Trains”, 2013<br><span class="italic" style="font-size: 1.2rem;">Transportation Science 47, 295-311</span>
+							</li><small class="aexp">first integrated method with heuristics</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">F. Yan, R. M. P. Goverde</span>&nbsp;“Combined line planning and train timetabling<br>for strongly heterogeneous railway lines with direct connections.”, 2019<br><span class="italic" style="font-size: 1.2rem">Transportation Research Part B: Methodological 127, 20-46</span>
+							</li><small class="aexp">multi-frequency line planning and multi-period timetabling, least capacity loss</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">Z. Huang, H. Zheng</span>&nbsp;“Integrated Line Planning and Timetable Scheduling for Railways<br>Considering the Dynamics and Uncertainty of Passenger Demand”, 2025<br><span class="italic" style="font-size: 1.2rem">IET Intelligent Trans Sys. 19, e70019</span>
+							</li><small class="aexp">focus on robustness via DL-based passenger demand estimation</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 7 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;LPP and TTP</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">LPP, TTP & INTEGRATED</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">SOLVING METHODS</small>
+            <small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">MILP relaxations</li>
+							<small class="aexp">REDUCING CONSTRAINTS, POTENTIALLY INVALIDATING SOLUTIONS</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">A. Caprara, M. Fischetti, P. Toth</span>&nbsp;“Modeling and Solving the Train Timetabling Problem”, 2002<br><span class="italic" style="font-size: 1.2rem;">Operations Research 50, 851-861</span>
+							</li><small class="aexp">Lagrangian relaxation and heuristic</small></ul>
+							
+							<li style="margin-bottom: 0.6rem; margin-top: 2rem;">Heuristic Algorithms</li>
+							<small class="aexp">iterative approximate algorithms</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">V. Cacchiani, A. Caprara, P. Toth</span>&nbsp;“A column generation approach to train timetabling on a corridor”, 2007<br><span class="italic" style="font-size: 1.2rem;">4OR 6, 125-142</span>
+							</li><small class="aexp">column generation over single corridor</small>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">A. Higgins, E. Kozan, L. Ferreira</span>&nbsp;“Heuristic Techniques for Single Line Train Scheduling”, 1997<br><span class="italic" style="font-size: 1.2rem;">Journal of Heuristics 3, 43-62</span>
+							</li><small class="aexp">column generation over single corridor</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 8 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;towards reinforcement learning</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">LPP, TTP & INTEGRATED</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">PITFALLS</small>
+            <small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">Unsatisfying performance</li>
+							<small class="aexp muted">poor solution quality or time requirements</small>
+							<li style="margin-bottom: 0.6rem;">Poor scalability</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">of exact formulations, heuristics with<br>high computational requirements</small>
+							<li style="margin-bottom: 0.6rem;">Unrealistic scenarios</li>
+							<small class="aexp muted">small or trivial case studies</small>
+							<li style="margin-bottom: 0.6rem;">Single-use computation</li>
+							<small class="aexp muted">no reusability</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 9 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;towards reinforcement learning</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">AN INTROUCTION</small>
+						<div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 60%; margin: 2rem;">
+								<img src="img/rl.png" style="height: 30rem; margin-top: 2rem;"/>
+							</div>
+							<div style="width: 40%; margin: 2rem;">
+								<div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-row">
+									<small style="margin-top: 8rem; align-items: center;"><ul>
+										<li style="margin-bottom: 0.6rem;">State of the system</li>
+										<small class="aexp">could be non fully perceivable by the agent(s)</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Action space</li>
+										<small class="aexp">continuous or discrete</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Environment dynamics</li>
+										<small class="aexp">rewards, transition probabilities</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Policy</li>
+										<small class="aexp">defining agent behaviour</small>
+									</ul></small>
+								</div>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 10 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;RL</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">APPROACHES</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Single agent acting as a dispatcher or multiple agents controlling trains moving on the network
+							</li>
+							<small class="aexp">more realistic representations</small>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">D. Šemrov et al.</span>&nbsp;“Reinforcement learning approach for train rescheduling on a single-track railway”, 2016<br><span class="italic" style="font-size: 1.2rem">Transportation Research Part B: Methodological 86, 250-267</span>
+							</li><small class="aexp">single-agent real-time rescheduling</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">H. Khadilkar</span>&nbsp;“A scalable reinforcement learning algorithm for scheduling railway lines”, 2018<br><span class="italic" style="font-size: 1.2rem">IEEE Transactions on Intelligent Transportation Systems 20, 727-736</span>
+							</li><small class="aexp">single-agent iterative scheduling</small></ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem; margin-top: 1rem;">
+								Answers the question
+								<div style="background: #454545; padding: 1rem; margin: 1rem; border-radius: 0.2rem; font-weight: 700" class="italic">What is the best action to perform given a system state?</div>
+								in order to maximise the total rewards received by each agent?
+							</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 11 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;RL</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">FORMULATION</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">Environment encompasses the infrastructure</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">representing topology and dynamics</small>
+							<li style="margin-bottom: 0.6rem; list-style: none;">
+								<img class="colorize" src="img/khadi1.png" style="height: 12rem; margin-top: 2rem;"/>
+							</li>
+							<li style="margin-bottom: 0.6rem;">Single agent acts as a dispatcher</li>
+							<small class="aexp muted">viewing the network and controlling train movements</small>
+							<li style="margin-bottom: 0.6rem;">States represent occupancy and relevant information</li>
+							<small class="aexp muted">about the system or a portion of it</small>
+							<li style="margin-bottom: 0.6rem;">Rewards are generated according to episode outcome</li>
+							<small class="aexp muted">penalties for early termination and suboptimal conditions</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 12 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;RL</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">PITFALLS</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem;">States grow with network size</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">noisy and hard to maintain with big and complex infrastructure</small>
+							<li style="margin-bottom: 0.6rem;">Credit assignment becomes unreliable</li>
+							<small class="aexp muted">single reward for a complex scenario</small>
+							<li style="margin-bottom: 0.6rem;">Policy could lack expressivity</li>
+							<small class="aexp muted">poor generalisation across the scenario</small>
+							<li style="margin-bottom: 0.6rem;">Actions are imprecise</li>
+							<small class="aexp muted">when referred a system made up of multiple different entities</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 13 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;towards marl</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">ENTER</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">MULTI-AGENT REINFORCEMENT LEARNING</small>
+						<div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 60%; margin: 2rem;">
+								<img class="colorize" src="img/marl.png" style="height: 30rem; margin-top: 2rem;"/>
+							</div>
+							<div style="width: 40%; margin: 2rem;">
+								<div style="margin-top: auto; margin-bottom: auto; justify-content: center; align-items: center;" class="flex-row">
+									<small style="margin-top: 4rem; align-items: center;"><ul>
+										<li style="margin-bottom: 0.6rem;">Multiple agents interacting with the environment</li>
+										<small class="aexp">independently, cooperatively and competitively</small>
+										<li style="margin-bottom: 0.6rem;">Observations of the environment</li>
+										<small class="aexp">possibly local to each agent</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Action spaces</li>
+										<small class="aexp">potentially different from agent to agent</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Rewards</li>
+										<small class="aexp">local to agents or global to all agents</small>
+										<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Policy</li>
+										<small class="aexp">with or without parameter sharing</small>
+									</ul></small>
+								</div>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 14 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;MARL</small>
+          <div class="slide">
+            <small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">MULTI-AGENT REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">APPROACHES</small>
+						<small style="margin-top: 2rem;"><ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								Multiple agents controlling train in circulation through the network
+							</li>
+							<small class="aexp">each train moving independently</small>
+							<ul><li style="margin-bottom: 0.6rem; font-size: 1.25rem;">
+								<span class="muted">W. Li and S. Ni</span>&nbsp;“Train timetabling with the general learning environment<br>and multi-agent deep reinforcement learning”, 2022<br><span class="italic" style="font-size: 1.2rem">Transportation Research Part B: Methodological 157, 230-251</span>
+							</li><small class="aexp">multi-agent without parameter sharing</small></ul>
+							<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+								<span class="muted">I. Schneider et al.</span>&nbsp;“Intelligent railway capacity and traffic management using<br>multi-agent deep reinforcement learning”, 2024<br><span class="italic" style="font-size: 1.2rem">2024 IEEE 27th International Conference on Intelligent Transportation Systems (ITSC), 1743-1748</span>
+							</li><small class="aexp">(re)scheduling framework with microscopic simulation</small></ul>
+							<li style="margin-bottom: 0.6rem; font-size: 1.25rem; margin-top: 1rem;">
+								Answers the question
+								<div style="background: #454545; padding: 1rem; margin: 1rem; border-radius: 0.2rem; font-weight: 700" class="italic">What is the best action to perform given a local state?</div>
+								in order to maximise the total rewards received by each agent, possibly competing<br>or coordinating with others?
+							</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 15 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">BACKGROUND</span>&nbsp;&bull;&nbsp;MARL</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0;">MULTI-AGENT REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">(DIS)ADVANTAGES</small>
+
+						<div class="flex-row" style="justify-content: space-between;">
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<small class="aexp">UPSIDES</small>
+									<li style="margin-bottom: 0.6rem;">Decision-making decentralisation</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">reducing state and action spaces</small>
+									<li style="margin-bottom: 0.6rem;">Generalisable policies</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">with parameter sharing</small>
+									<li style="margin-bottom: 0.6rem;">Realistic formulation</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">reflecting dispatch operations</small>
+									<li style="margin-bottom: 0.6rem;">Modularity and expandability</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">changes to single repeated unit</small>
+								</ul></small>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<small class="aexp">DOWNSIDES</small>
+									<li style="margin-bottom: 0.6rem;">Coordination might be hard to establish</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">with limited perception and increasing agents</small>
+									<li style="margin-bottom: 0.6rem;">Train-centric approaches are less realistic</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">learning independent movement</small>
+									<li style="margin-bottom: 0.6rem;">Train-centric approaches have poor scalability</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">as trains to be scheduled change</small>
+								</ul></small>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 16 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;INTRODUCTION</small>
+          <div class="slide">
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem;">ENTER a</small>
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem;">DECENTRALISED MESOSCOPIC<br>INFRASTRUCTURE-CENTRIC<br>MULTI-AGENT REINFORCEMENT LEARNING</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+          </div>
+        </section>
+
+				<!-- slide 17 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;INTRODUCTION</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span>DECENTRALISED</span>&nbsp;<span class="muted">MESOSCOPIC INFRASTRUCTURE-CENTRIC MULTI-AGENT REINFORCEMENT LEARNING</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+
+						<div class="flex-row" style="justify-content: space-between; margin-top: 6rem;">
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<small class="aexp">DECENTRALISED</small>
+									<li style="margin-bottom: 0.6rem;">Agent sees a local state</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">based on its neighbourhood</small>
+									<li style="margin-bottom: 0.6rem;">Actions and policy refer to a single train</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">choosing to halt or where to move</small>
+								</ul></small>
+							</div>
+							<div style="width: 50%; margin: 2rem;">
+								<small style="margin-top: 2rem;"><ul>
+									<small class="aexp">CENTRALISED</small>
+									<li style="margin-bottom: 0.6rem;">Agent sees the global state</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">encompassing the entire network</small>
+									<li style="margin-bottom: 0.6rem;">Actions and policy apply to the system</li>
+									<small class="aexp muted" style="margin-bottom: 0.6rem;">agent acts as a line coordinator</small>
+								</ul></small>
+							</div>
+						</div>
+
+						<small style="margin-top: 2rem;"><ul>
+						<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+							<span class="muted">V. Agasucci et al.</span>&nbsp;“Solving the train dispatching problem via deep reinforcement learning”, 2023<br><span class="italic" style="font-size: 1.2rem">Journal of Rail Transport Planning & Management 26, 100394</span>
+						</li><small class="aexp">comparing centralised convolutional GNN vs decentralised linear q-learning</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 18 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;INTRODUCTION</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span class="muted">DECENTRALISED</span>&nbsp;<span>MESOSCOPIC</span>&nbsp;<span class="muted">INFRASTRUCTURE-CENTRIC MULTI-AGENT REINFORCEMENT LEARNING</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+
+						<div class="flex-row" style="justify-content: center;">
+							<div style="width: 25%; margin: 2rem; align-items: center;">
+								<div style="height: 20rem; align-items: center;" class="flex-row">
+									<img class="colorize" src="img/macroscopic.png" style="height: 13rem; margin-top: 2rem;"/>
+								</div>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 2.8rem;">MACROSCOPIC</small>
+							</div>
+							<div style="width: 35%; margin: 2rem; align-items: center;">
+								<div style="height: 20rem; align-items: center;" class="flex-row">
+									<img class="colorize" src="img/mesoscopic.png" style="height: 20rem; margin-top: 2rem;"/>
+								</div>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 2.8rem;">MESOSCOPIC</small>
+							</div>
+							<div style="width: 40%; margin: 2rem; align-items: center;">
+								<div style="height: 20rem; align-items: center;" class="flex-row">
+									<img class="colorize" src="img/microscopic.png" style="height: 20rem; margin-top: 2rem;"/>
+								</div>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 2.8rem;">MICROSCOPIC</small>
+							</div>
+						</div>
+
+						<small style="margin-top: 2rem;"><ul>
+						<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+							<span class="muted">S. de Fabris et al.</span>&nbsp;“Automatic generation of railway timetables based on<br>a mesoscopic infrastructure model”, 2014<br><span class="italic" style="font-size: 1.2rem">Journal of Rail Transport Planning & Management 4, 2-13</span>
+						</li><small class="aexp">introducing the mesoscopic level</small></ul>
+						</ul></small>
+          </div>
+        </section>
+        
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+        disableLayout: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
