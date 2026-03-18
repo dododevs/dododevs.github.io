@@ -476,7 +476,7 @@
 						</small>
 						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
 
-						<div class="flex-row" style="justify-content: space-between; margin-top: 6rem;">
+						<div class="flex-row" style="justify-content: space-between; margin-top: 4rem;">
 							<div style="width: 50%; margin: 2rem;">
 								<small style="margin-top: 2rem;"><ul>
 									<small class="aexp">DECENTRALISED</small>
@@ -547,7 +547,554 @@
 						</ul></small>
           </div>
         </section>
-        
+
+				<!-- slide 19 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;FORMULATION</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span class="muted">DECENTRALISED MESOSCOPIC</span>&nbsp;<span>INFRASTRUCTURE-CENTRIC</span>&nbsp;<span class="muted">MULTI-AGENT REINFORCEMENT LEARNING</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 24rem; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl.png" style="height: 24rem;"/>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_agents.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$I = \{i_1, i_2, ..., i_N\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_tracks.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_t = \{\textrm{wait}, \textrm{push left}, \textrm{push right}\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_stations.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_s = \{\textrm{wait}, \textrm{push left}, \textrm{push right}, \textrm{deploy left}, \textrm{deploy right}\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_obs.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">
+								$s^b_t = \{X_{\rm m}^b, X_{\rm s1}^b, X_{\rm s2}^b, D^b_{\rm left}, D^b_{\rm right}, E^b_{\rm left}, E^b_{\rm right}, o^b_{\rm left}, o^b_{\rm right} \}\,|\,b \in B$
+								<br><br>
+								<div style="font-size: 1.6rem;">where $D^b_d \rightarrow [0, 1]$ returns train demand for block $b$ in direction $d \in \{\textrm{left}, \textrm{right}\}$</div>
+								<div style="font-size: 1.6rem; margin-top: 0.65rem;">and $E^b_d \rightarrow [0, 1]$ returns expected arrivals at block $b$ in direction $d$</div>
+							</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_nobs.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">
+								$o^b_d = \{U(b, d), X_{\rm s1}^{u(b, d)}, X_{\rm s2}^{u(b, d)}, D^{u(b, d)}_{\rm left}, D^{u(b, d)}_{\rm right}, E^{u(b, d)}_{\rm left}, E^{u(b, d)}_{\rm right}, Occ^b_d\}$
+								<br><br>
+								<div style="font-size: 1.6rem;">where $U(b, d) \rightarrow \{0, 1\}$ determines whether neighbour of $b$ in direction $d$ exists</div>
+								<div style="font-size: 1.6rem; margin-top: 0.65rem;">and $u(b, d)$ returns such neighbour <b>*</b></div>
+							</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_mask1.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_b = \{\textrm{wait}, \textrm{deploy right}\}$ if $D^b_{\rm right} \gt 0$</div>
+							<div style="margin-top: 1rem; font-size: 2rem;">$A_b = \{\textrm{wait}\}$ otherwise</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_mask2.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_b = \{\textrm{wait}, \textrm{deploy right}\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_mask3.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_b = \{\textrm{wait}, \textrm{deploy right}\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_mask4.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$A_b = \{\textrm{wait}, \textrm{push right}, \textrm{deploy right}\}$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_reward1.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;"><span class="muted">$a_i = \textrm{push right}$</span>&nbsp;&nbsp;$r_i = +10$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_reward2.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;"><span class="muted">$a_i = \textrm{push right}$</span>&nbsp;&nbsp;$r_i = +0.05$</div>
+						</div>
+						<div class="fragment fade-in-then-out" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_reward3.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;"><span class="muted">$a_i = \textrm{push right}$</span>&nbsp;&nbsp;$r_i = -10$</div>
+						</div>
+						<div class="fragment fade-in" style="position: absolute; margin-top: 2rem; height: 30rem; width: 64rem;">
+							<img class="colorize" src="img/icmarl_reward4.png" style="height: 24rem;"/>
+							<div style="margin-top: -6rem; font-size: 2rem;">$r = \{r_i - 10\,|\,i \in I\}$</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 20 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;TRAINING</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span class="muted">DECENTRALISED MESOSCOPIC INFRASTRUCTURE-CENTRIC</span>&nbsp;<span>MULTI-AGENT REINFORCEMENT LEARNING</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Training with the MAPPO algorithm</li>
+							<small class="aexp">multi-agent proximal policy optimisation</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Based on PPO, for cooperating agents</li>
+							<small class="aexp">clipped policy updates</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">On-policy, offline</li>
+							<small class="aexp">the policy is trained on rollouts obtained following the same policy</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Experience gathered between updates</li>
+							<small class="aexp">sampled rollouts are used on policy update</small>
+						</ul></small>
+
+						<small style="margin-top: 2rem;"><ul>
+						<ul><li style="margin-bottom: 0.6rem; margin-top: 1rem; font-size: 1.25rem;">
+							<span class="muted">C. Yu et al.</span>&nbsp;“The surprising effectiveness of PPO in cooperative, multi-agent games”, 2021<br><span class="italic" style="font-size: 1.2rem">arXiv 2103.01955</span>
+						</li><small class="aexp">introducing MAPPO and demonstrating its performance</small></ul>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 21 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;TRAINING</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span class="muted">DECENTRALISED MESOSCOPIC INFRASTRUCTURE-CENTRIC</span>&nbsp;<span>MULTI-AGENT REINFORCEMENT LEARNING</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">APPROACH</small>
+
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Centralised Training Decentralised Execution (CTDE)</li>
+							<small class="aexp">global state accessible during training, only local during execution</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">A2C-like architecture</li>
+							<small class="aexp">with parameterised policy and value networks</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Value estimation informs policy update</li>
+							<small class="aexp">guiding the policy towards the better states</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Policy update with compound value and policy loss</li>
+							<small class="aexp">minimised by gradient descent step</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem; list-style: none">
+								<span>$$\rho = e^{log\,p' - log\,p}$$</span>
+								<span>$$L_{clipped} = A \cdot \textrm{clip}(\rho, 1 - c, 1 + c)\,$$</span>
+								<span>$$L^{clip}_{\pi_\theta} = \frac{1}{N}\sum_{\rm batch} L_{clipped},\quad L_{V_\phi} = \frac{1}{N}\sum_{\rm batch}(R - \hat{V})^2$$</span>
+								<span class="muted">where $A$ is the advantage vector and $R$ the return vector</span>
+							</li>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 22 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;TRAINING</small>
+          <div class="slide">
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Actor network</li>
+							<small class="aexp">parameter sharing across all agents (by type)</small>
+						</ul></small>
+						<img class="colorize" src="img/actor.png" style="height: 36rem;">
+          </div>
+        </section>
+
+				<!-- slide 23 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;TRAINING</small>
+          <div class="slide">
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Critic network</li>
+							<small class="aexp">single global network for all agents</small>
+						</ul></small>
+						<img class="colorize" src="img/critic.png" style="height: 28rem;">
+						<img class="colorize" src="img/icmarl_critic.png" style="height: 8rem;">
+          </div>
+        </section>
+
+				<!-- slide 24 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;EXPERIMENTS</small>
+          <div class="slide">
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Default hyperparameters</li>
+							<small class="aexp">from reinforcement learning literature and algorithms</small>
+							<li style="margin-bottom: 0.6rem;">$8$ parallel environments, $2048$ rollouts</li>
+							<small class="aexp">synchronous but faster, longer episodes</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Implementation in Python, PettingZoo, skrl and PyTorch</li>
+							<small class="aexp">deep multi-agent reinforcement learning + MAPPO</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Training on Mac Mini M1 (16 GB)</li>
+							<small class="aexp">consumer hardware</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Three scenarios tested</li>
+							<small class="aexp">increasing network size</small>
+							<li style="margin-bottom: 0.6rem; margin-top: 1rem;">Different train count tested</li>
+							<small class="aexp">for assessing scalability</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 25 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;EXPERIMENTS</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">
+							<span class="muted">TESTING SCENARIOS</span>
+						</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">COMPARISON</small>
+						<small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-top: 1.2rem;">
+							<thead>
+								<tr style="text-align:left;">
+									<td style="padding: 0.5rem;"></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Stations</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Trains</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Total sections</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Timesteps</small></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">SMALL</small></td>
+									<td style="padding: 0.5rem;">$4$</td>
+									<td style="padding: 0.5rem;">$2$</td>
+									<td style="padding: 0.5rem;">$10$</td>
+									<td style="padding: 0.5rem;">$60$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">MEDIUM</small></td>
+									<td style="padding: 0.5rem;">$6$</td>
+									<td style="padding: 0.5rem;">$3$</td>
+									<td style="padding: 0.5rem;">$18$</td>
+									<td style="padding: 0.5rem;">$140$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">Flåmsbana (FLB)</small></td>
+									<td style="padding: 0.5rem;">$9$</td>
+									<td style="padding: 0.5rem;">$7$</td>
+									<td style="padding: 0.5rem;">$49$</td>
+									<td style="padding: 0.5rem;">$600$</td>
+								</tr>
+							</tbody>
+						</table></small>
+						<small style="margin-top: 4rem; align-items: center;"><ul>
+							<li style="margin-bottom: 0.6rem;">Flåmsbana scenario obtained from <b>treno</b>lab's data</li>
+							<small class="aexp">realistic case study from the norwegian network</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 26 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;RESULTS</small>
+          <div class="slide">
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">SMALL SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">INSTANTANEOUS REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/small_rewards1.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">SMALL SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TOTAL REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/small_rewards2.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">MEDIUM SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">INSTANTANEOUS REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/medium_rewards1.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">MEDIUM SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TOTAL REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/medium_rewards2.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">FLB SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">INSTANTANEOUS REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/flb_rewards1.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">FLB SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TOTAL REWARDS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/flb_rewards2.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">ALL SCENARIOS</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">MEAN TIMESTEPS</small>
+							</div>
+							<div class="plot-container">
+								<iframe src="media/timesteps.html" loading="lazy"></iframe>
+							</div>
+						</div>
+						<div class="plot-wrapper fragment fade-in" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">MEDIUM SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">POLICY AND VALUES LOSSES</small>
+							</div>
+							<div class="plot-container" style="96rem;">
+								<iframe src="media/losses.html" loading="lazy"></iframe>
+							</div>
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 26 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;RESULTS</small>
+          <div class="slide">
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">SMALL SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TIMETABLE</small>
+							</div>
+							<img src="img/tt_small.svg" style="height: 52rem; margin-top: -4rem;">
+						</div>
+						<div class="plot-wrapper fragment fade-in-then-out" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">MEDIUM SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TIMETABLE</small>
+							</div>
+							<img src="img/tt_medium.svg" style="width: 80rem; margin-top: -4rem;">
+						</div>
+						<div class="fragment fade-in" style="position: absolute;">
+							<div class="flex-col">
+								<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">FLB SCENARIO</small>
+								<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TIMETABLE</small>
+							</div>
+							<img src="img/tt_flb_composite_nobg.png" style="width: 512rem; margin-top: -2rem;">
+						</div>
+          </div>
+        </section>
+
+				<!-- slide 27 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;RESULTS</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">ALL SCENARIOS</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">TRAINING & INFERENCE TIMES</small>
+						<small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-top: 1.2rem;">
+							<thead>
+								<tr style="text-align:left;">
+									<td style="padding: 0.5rem;"></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Training timesteps</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Training time</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Inference time</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Inference timesteps</small></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">SMALL</small></td>
+									<td style="padding: 0.5rem;">$10000$</td>
+									<td style="padding: 0.5rem;">$\rm 12m\,55s$</td>
+									<td style="padding: 0.5rem;">$\rm 0.5s$</td>
+									<td style="padding: 0.5rem;">$60$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">MEDIUM</small></td>
+									<td style="padding: 0.5rem;">$96000$</td>
+									<td style="padding: 0.5rem;">$\rm 5h\,3m\,51s$</td>
+									<td style="padding: 0.5rem;">$\rm 2.13s$</td>
+									<td style="padding: 0.5rem;">$140$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">FLB</small></td>
+									<td style="padding: 0.5rem;">$40000$</td>
+									<td style="padding: 0.5rem;">$\rm 3h\,35m\,10s$</td>
+									<td style="padding: 0.5rem;">$\rm 12.55s$</td>
+									<td style="padding: 0.5rem;">$600$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">FLB</small></td>
+									<td style="padding: 0.5rem;">$96000$</td>
+									<td style="padding: 0.5rem;">$\rm 8h\,26m\,58s$</td>
+									<td style="padding: 0.5rem;">$\rm 12.49s$</td>
+									<td style="padding: 0.5rem;">$600$</td>
+								</tr>
+							</tbody>
+						</table></small>
+          </div>
+        </section>
+
+				<!-- slide 28 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;RESULTS</small>
+          <div class="slide">
+						<small class="aexp" style="margin-bottom: 0; padding-bottom: 0; margin-top: 0.2rem; font-size: 1.2rem;">SMALL SCENARIO</small>
+						<small class="aexp muted" style="margin-bottom: 0; padding-bottom: 0; font-size: 1rem; margin-top: 0.2rem;">SCALABILITY</small>
+						<small><table class="symbol-table" id="variables" style="width:100%; border-collapse: collapse; margin-top: 1.2rem;">
+							<thead>
+								<tr style="text-align:left;">
+									<td style="padding: 0.5rem;"></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Trains</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Training timesteps</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Training time</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Inference time</small></td>
+									<td style="padding: 0.5rem;"><small class="aexp muted" style="margin-top: 0.5rem;">Inference timesteps</small></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">SMALL</small></td>
+									<td style="padding: 0.5rem;">$2$</td>
+									<td style="padding: 0.5rem;">$40000$</td>
+									<td style="padding: 0.5rem;">$\rm 37m\,58s$</td>
+									<td style="padding: 0.5rem;">$\rm 0.51s$</td>
+									<td style="padding: 0.5rem;">$60$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">SMALL</small></td>
+									<td style="padding: 0.5rem;">$4$</td>
+									<td style="padding: 0.5rem;">$40000$</td>
+									<td style="padding: 0.5rem;">$\rm 38m\,19s$</td>
+									<td style="padding: 0.5rem;">$\rm 0.49s$</td>
+									<td style="padding: 0.5rem;">$60$</td>
+								</tr>
+								<tr>
+									<td style="padding: 0.5rem; text-align: center;"><small class="aexp muted" style="margin-top: 0.5rem;">SMALL</small></td>
+									<td style="padding: 0.5rem;">$8$</td>
+									<td style="padding: 0.5rem;">$40000$</td>
+									<td style="padding: 0.5rem;">$\rm 38m\,23s$</td>
+									<td style="padding: 0.5rem;">$\rm 0.98s$</td>
+									<td style="padding: 0.5rem;">$120$</td>
+								</tr>
+							</tbody>
+						</table></small>
+          </div>
+        </section>
+
+				<!-- slide 29 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;CONCLUSIONS</small>
+          <div class="slide">
+						<small style="margin-top: 2rem; justify-items: left;"><ul>
+							<div>
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">UPSIDES</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Realistic model of the scenario</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">encompassing railway network and operation</small>
+							<li style="margin-bottom: 0.6rem;">Modularity and expandability</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">to more complex scenarios and dynamics</small>
+							<li style="margin-bottom: 0.6rem;">Successful outcomes on tested scenarios</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">generation of valid timetables</small>
+							<li style="margin-bottom: 0.6rem;">Good technical performance</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">policy generalisation, stability</small>
+							<div style="margin-top: 2rem;">
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">POTENTIAL USE CASE</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Training on maximal train count</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">testing varying traffic on the same network</small>
+						</ul></small>
+          </div>
+        </section>
+
+				<!-- slide 30 -->
+				<section class="slide">
+          <div class="flex-row" style="position: absolute; bottom: 2.5rem; right: 2.5rem; justify-content: end; align-items: center;">
+            <img class="colorize" src="img/nuovo-logo_units.png" style="height: 3rem;"/>
+            &nbsp;&nbsp;&nbsp;<small><b>&times;</b></small>&nbsp;
+            <img class="colorize" src="img/trenolab.svg" style="height: 3rem;"/>
+          </div>
+          <small class="aexp" style="position: absolute; left: 4rem; bottom: 4rem;"><span class="muted aexp">METHOD</span>&nbsp;&bull;&nbsp;CONCLUSIONS</small>
+          <div class="slide">
+						<small style="margin-top: 2rem; justify-items: left;"><ul>
+							<div>
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">SHORTCOMINGS and IMPROVEMENTS</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">More extensive training needed</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">specialised hardware and longer time</small>
+							<li style="margin-bottom: 0.6rem;">Better modularity and complexity</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">independent platforms, routing capabilities, explicit stopping</small>
+							
+							<div style="margin-top: 2rem;">
+								<small class="aexp muted" style="padding-bottom: 0; font-size: 1rem;">RESEARCH DIRECTIONS</small>
+							</div>
+							<li style="margin-bottom: 0.6rem;">Policy and value network architectures</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">state feature engineering, other graph-based networks</small>
+							<li style="margin-bottom: 0.6rem;">Stochasticity and robustness</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">add randomicity in system dynamics, focus on robustness</small>
+							<li style="margin-bottom: 0.6rem;">Model investigation</li>
+							<small class="aexp muted" style="margin-bottom: 0.6rem;">new solutions and frameworks based on this conceptualisation</small>
+						</ul></small>
+          </div>
+        </section>
 			</div>
 		</div>
 
@@ -560,7 +1107,8 @@
 			Reveal.initialize({
 				hash: true,
         disableLayout: true,
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ],
+				transition: "slide"
 			});
 		</script>
 	</body>
