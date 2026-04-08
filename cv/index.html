@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CV</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 		<link rel="stylesheet" href="css/cv.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +27,9 @@
                 <a class="rbtn d-flex flex-row me-1" id="toolbar-night"><i class="bi bi-moon align-self-center mx-auto"></i></a>
               </div>
             </div>
-            <div class="col-md-8 col-10 pt-3 pb-1 px-5 px-md-3">
+            <div class="col-md-8 col-10 pt-3 pb-3 px-5 px-md-3">
               <h1 id="full-name">Andrea Esposito</h1>
-              <p id="full-name-sub">&nbsp;</p>
+              <!-- <p id="full-name-sub">&nbsp;</p> -->
             </div>
             <div class="col-2 col-md-0 d-md-none d-flex flex-row">
               <a class="rbtn d-flex flex-row me-3 align-self-center" id="toolbar-sm-menu"><i class="bi bi-three-dots-vertical align-self-center mx-auto"></i></a>
@@ -45,36 +46,41 @@
         </div>
       </nav>
       <div class="container-fluid row px-5">
-        <div class="col-md-4 d-none d-md-block pt-5">
+        <!-- <div class="col-md-4 d-none d-md-block pt-5">
           <h3 class="my-2">&nbsp;</h3>
           <p><i class="bi bi-envelope"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="mailto:aesposito@ik.me">aesposito<b>@</b>ik.me</a></p>
           <p><i class="bi bi-github"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://github.com/dododevs">dododevs</a></p>
-          <p><img style="width: 1.2rem;" alt="" src="data:image/png;base64,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" />&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/dododevs">dododevs</a></p>
+					<p><i class="bi bi-gitlab"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/dododevs">dododevs</a></p>
+					<p><i class="bi bi-git"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://codeberg.org/dododevs">dododevs</a></p>
+          <p><i class="bi bi-linkedin"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/andrea-esposito-8a37ab25b">Andrea Esposito</a></p>
+        </div> -->
+				<div class="col-md-4 col-12 pt-5">
+          <h3 class="my-2 d-none d-md-block">&nbsp;</h3>
+          <p><i class="bi bi-envelope"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="mailto:aesposito@ik.me">aesposito<b>@</b>ik.me</a></p>
+          <p><i class="bi bi-github"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://github.com/dododevs">dododevs</a></p>
+					<p><i class="bi bi-gitlab"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://gitlab.com/dododevs">dododevs</a></p>
+					<p><i class="bi bi-git"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://codeberg.org/dododevs">dododevs</a></p>
           <p><i class="bi bi-linkedin"></i>&nbsp;&nbsp;<a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/andrea-esposito-8a37ab25b">Andrea Esposito</a></p>
         </div>
         <div class="col-md-8 col-12">
           <h3 class="mt-5 mb-3 it">Profilo</h3>
           <h3 class="mt-5 mb-3 en">Profile</h3>
           <p class="it">
-          Laureando in Scientific and Data Intensive Computing (Data Science con elementi di IA, ottimizzazione, Data Engineering e High Performance Computing).
-          Laureato in informatica con background scientifico e discreta esperienza in campo desktop, principalmente
-          con <b>Java</b>, mobile con Java + <b>Android SDK</b> e server con <b>Python</b> e <b>Django</b>, rafforzata e messa in pratica durante il
-          percorso di studio universitario di <b>informatica pura</b> con indirizzo <b>Software and Systems Engineering</b>, spesso in gruppo con altri studenti.
-          Esperienza sul campo acquisita, oltre che attraverso la realizzazione di diversi progetti personali, con lavoro autonomo di 
-          <b>consulenza software</b> a singoli o team e con contributi a progetti <b>open source</b>, di cui attivo fautore. Utente <b>Linux</b>, 
-          di cui entusiastico testimone. Viaggiando attualmente dal mondo dell'ingegneria del software verso gli orizzonti di Data Science e
-          intelligenza artificiale, con l'intento di trarre significato e vantaggio dai dati grezzi a nostra disposizione, con particolare
-          attenzione all'ambito del trasporto pubblico e della logistica. 
+          Laureato magistrale in Data Science e Scientific Computing (LM-44), con un curriculum che spazia da tecniche di Data Science e Machine Learning a High Performance Computing e infrastrutture dati,
+					e integra elementi di Data Engineering e Ottimizzazione. Appassionato e recentemente coinvolto nella ricerca in campo di trasporti, con particolare interesse nell'esplorare come
+					l'Intelligenza Artificiale e il Machine Learning possano contribuire a migliorare il trasporto pubblico e ferroviario in termini di sicurezza, capacità, robustezza e puntualità. 
+					Laureato triennale in Informatica (L-31) con una solida formazione scientifica e una buona esperienza nella programmazione desktop, mobile e lato server, consolidata da lavori accademici 
+					di gruppo e da attività freelance come consulente software per privati e aziende, affiancate dallo sviluppo di progetti personali e contributi a software open-source, di cui attivo fautore. 
+					Utente Linux, di cui entusiastico testimone.
           </p>
           <p class="en">
-          Data Science and Scientific Computing undergraduate (Data Science with elements of AI, Optimization, Data Engineering and High Performance Computing).
-          Computer Science graduate with a scientific background and a fair experience with desktop programming, mainly
-          <b>Java</b>, mobile with Java + <b>Android SDK</b> and server-side programming with <b>Python</b> and <b>Django</b>, strengthened and put into practice
-          during the course of study of <b>Computer Science</b> with the <b>Software and Systems Engineering</b> specialisation, often teamed with fellow students.
-          Lone wolf by night, enthusiastic team-worker with strong collaboration skills by day, embracing positivity and curiosity towards new challenges.
-          Alongside building a number of personal projects, hands-on experience was acquired with freelance jobs of <b>software consulting</b> for individuals or teams
-          and contributions to <b>open source</b> projects, actively endorsed. <b>Linux</b> user, enthusiast, ambassador. Recently took a peek at the realm of AI and Data Science
-          and fell into the rabbit hole of making sense and wonders out of crude data, with particular attention to the world of public transit and logistics.   
+					Data Science and Scientific Computing graduate (Master's), with a curriculum spanning from <b>Data Science and Machine Learning</b> techniques to High Performance Computing and Data Infrastructures, 
+					including elements of Data Engineering and Optimisation. Passionate and recently involved in <b>Transportation Research</b>, especially keen on finding opportunities to investigate how the realm 
+					of Artificial Intelligence and Machine Learning can help improve <b>public transit</b> and <b>railways</b> in terms of safety, capacity, robustness and punctuality. 
+					Computer Science graduate (Bachelor's) with a scientific background and a fair experience with desktop, mobile, and server-side programming, 
+					strengthened by academic group work and freelance work as software consultant for individuals and companies, alongside development of personal projects and contributions to <b>open-source</b> software, 
+					actively endorsed. <b>Linux</b> user, enthusiast, ambassador. Lone wolf by night, enthusiastic team-worker with strong collaboration skills by day, 
+					embracing positivity and curiosity towards new challenges.
           </p>
         </div>
       </div>
@@ -103,23 +109,26 @@
             <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
             <p class="skills-section col-1 m-0 p-0 my-auto en">IT SKILLS</p>
             <div class="col-10 px-4 mt-2">
-              <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <br>
-              <div class="entry-bar p-1 my-1 it">Python, Django&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">Python, Django&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <br>
-              <div class="entry-bar p-1 my-1 it">Linux: Bash, CLI, RPi&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">Linux: Bash, CLI, RPi&nbsp;&nbsp;</div>
-              <br>
-              <div class="entry-bar p-1 my-1 it">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">Web stack, Node&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              <br>
-              <div class="entry-bar p-1 my-1 it">PHP, C per l'HPC (MPI, OpenMP), C++&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">PHP, C for HPC (MPI, OpenMP), C++&nbsp;&nbsp;</div>
-              <br>
-              <div class="entry-bar p-1 my-1 it">React, JavaScript, TypeScript&nbsp;&nbsp;</div>
-              <div class="entry-bar p-1 my-1 en">React, JavaScript, TypeScript&nbsp;&nbsp;</div>
+							<p class="entry-title it">Analisi dati</p>
+							<p class="entry-title en">Data analysis</p>
+							<p class="entry-subtitle it">Python, pandas, numpy, GIS</p>
+							<p class="entry-subtitle en">Python, pandas, numpy, GIS</p>
+							<p class="entry-title it">ML e Reinforcement Learning</p>
+							<p class="entry-title en">ML and Reinforcement Learning</p>
+							<p class="entry-subtitle it">PyTorch, gymnasium, skrl</p>
+							<p class="entry-subtitle en">PyTorch, gymnasium, skrl</p>
+							<p class="entry-title it">Programmazione desktop e mobile</p>
+							<p class="entry-title en">Desktop & Mobile programming</p>
+							<p class="entry-subtitle it">Java, Android, Python, Django</p>
+							<p class="entry-subtitle en">Java, Android, Python, Django</p>
+							<p class="entry-title it">Programmazione web</p>
+							<p class="entry-title en">Web programming</p>
+							<p class="entry-subtitle it">PHP, Javascript, Typescript, Node, React</p>
+							<p class="entry-subtitle en">PHP, Javascript, Typescript, Node, React</p>
+							<p class="entry-title it">Programmazione HPC</p>
+							<p class="entry-title en">HPC programming</p>
+							<p class="entry-subtitle it">C, C++, OpenMP, MPI</p>
+							<p class="entry-subtitle en">C, C++, OpenMP, MPI</p>
             </div>
           </div>
           <div class="row p-0 mt-5" id="other-container">
@@ -153,22 +162,26 @@
           <!-- master's row -->
           <div class="row">
             <div class="col-8">
-              <p class="entry-title it">Corso di Laurea Magistrale in Scientific and Data-Intensive Computing (LM-44)<small class="text-muted"></small></p>
-              <p class="entry-title en">Master's Degree in Scientific and Data-Intensive Computing<small class="text-muted">&nbsp;&bull;&nbsp;</small></p>
-              <p class="entry-subtitle it">Universit&agrave; di Trieste</p>
+              <p class="entry-title it">Corso di Laurea Magistrale in Scientific and Data-Intensive Computing (LM-44)<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L. (Marzo 2026)</small></p>
+              <p class="entry-title en">Master's Degree in Scientific and Data-Intensive Computing<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L. (March 2026)</small></p>
+              <p class="entry-subtitle it mb-1">Con tesi di laurea &laquo;Solving the Train Timetabling Problem with Multi-Agent Reinforcement Learning: an Infrastructure-Centric Approach&raquo; realizzata con <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.trenolab.com"><b>treno</b>lab</a> e supervisionata dal <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://sites.units.it/castelli/">Prof. Lorenzo Castelli</a></p>
+              <p class="entry-subtitle en mb-1">With thesis &laquo;Solving the Train Timetabling Problem with Multi-Agent Reinforcement Learning: an Infrastructure-Centric Approach&raquo; devised with <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.trenolab.com"><b>treno</b>lab</a> and supervised by <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://sites.units.it/castelli/">Prof. Lorenzo Castelli</a></p>
+							<p class="entry-subtitle it">Universit&agrave; di Trieste</p>
               <p class="entry-subtitle en">University of Trieste</p>
             </div>
             <div class="d-none d-md-block col-md-1"><div class="timeline-segment"></div></div>
             <div class="col-4 col-md-3 px-4 px-md-0 my-auto my-md-auto">
-              <p class="yearspan it">Dal 2023</p>
-              <p class="yearspan en">Since 2023</p>
+              <p class="yearspan it">2023 - 2026</p>
+              <p class="yearspan en">2023 - 2026</p>
             </div>
           </div>
           <!-- bachelor's row -->
           <div class="row">
             <div class="col-8">
-              <p class="entry-title it">Corso di Laurea in Informatica (L-31)<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L. (Set. 2023)</small></p>
-              <p class="entry-title en">Bachelor's Degree in Computer Science<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L. (in Sep 2023)</small></p>
+              <p class="entry-title it">Corso di Laurea in Informatica (L-31)<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L.</small></p>
+              <p class="entry-title en">Bachelor's Degree in Computer Science<small class="text-muted">&nbsp;&bull;&nbsp;110/110 c.L.</small></p>
+							<p class="entry-subtitle it mb-1">Con tesi di laurea &laquo;Learning from the past: Using historical data to predict delays on the South Tyrolean rail network using Machine Learning&raquo; realizzata con <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sta.bz.it">sta - Strutture Trasporto Alto Adige</a> e supervisionata dal <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.unibz.it/en/faculties/engineering/academic-staff/person/38064-bruno-carpentieri">Prof. Bruno Carpentieri</a></p>
+              <p class="entry-subtitle en mb-1">With thesis &laquo;Learning from the past: Using historical data to predict delays on the South Tyrolean rail network using Machine Learning&raquo; devised with <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.sta.bz.it">sta - Strutture Trasporto Alto Adige</a> and supervised by <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.unibz.it/en/faculties/engineering/academic-staff/person/38064-bruno-carpentieri">Prof. Bruno Carpentieri</a></p>
               <p class="entry-subtitle it">Libera Universit&agrave; di Bolzano</p>
               <p class="entry-subtitle en">Free University of Bolzano-Bozen</p>
             </div>
@@ -231,19 +244,19 @@
           </div>
           <div class="row">
             <div class="col-8">
-              <p class="entry-title it">Tirocinio curricolare e stesura tesi (Erasmus Traineeship)</p>
-              <p class="entry-subtitle it">Presso il <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.lunduniversity.lu.se/lucat/group/v1001548"><b>Lund University</b></a> &bull;
-                Railway Operation group &bull; investigando approcci di Machine Learning e altre tecniche di analisi dati per la previsione e l'interpretazione dei ritardi sulla rete ferroviaria svedese
+              <p class="entry-title it">Tirocinio curricolare e produzione paper scientifico (Erasmus Traineeship)</p>
+              <p class="entry-subtitle it">Presso <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.lunduniversity.lu.se/lucat/group/v1001548"><b>Lund University</b> - gruppo Rail and Transit</a>
+                &bull; analisi dati e predizione ritardi e guasti infrastrutturali sulla rete ferroviaria svedese (progetto MIST4) &bull; supervisionato da <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://portal.research.lu.se/en/persons/carl-william-palmqvist/">Carl-William Palmqvist</a>
               </p>
-              <p class="entry-title en">Internship and thesis writing (Erasmus Traineeship)</p>
-              <p class="entry-subtitle en">At <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.lunduniversity.lu.se/lucat/group/v1001548"><b>Lund University</b></a> &bull;
-                Railway Operation group &bull; investigating Machine Learning approaches and other analysis techniques for delay prediction and interpretation on the Swedish railway network
+              <p class="entry-title en">Internship and paper writing (Erasmus Traineeship)</p>
+              <p class="entry-subtitle en">At <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://www.lunduniversity.lu.se/lucat/group/v1001548"><b>Lund University - Rail and Transit</b> group</a>
+                &bull; data analysis, visualisation and prediction of delays and infrastructure failures on the Swedish railway network (MIST4 project) &bull; supervised by <a class="sober-link" target="_blank" rel="noopener noreferrer" href="https://portal.research.lu.se/en/persons/carl-william-palmqvist/">Carl-William Palmqvist</a>
               </p>
             </div>
             <div class="d-none d-md-block col-md-1"><div class="timeline-segment"></div></div>
             <div class="col-4 col-md-3 px-4 px-md-0 my-auto my-md-0">
-              <p class="yearspan it">Da marzo 2025</p>
-              <p class="yearspan en">Since March 2025</p>
+              <p class="yearspan it">Mar 2025 - Dic 2025</p>
+              <p class="yearspan en">Mar 2025 - Dec 2025/p>
             </div>
           </div>
           <div class="row">
@@ -476,7 +489,7 @@
           <p class="skills-section col-1 m-0 p-0 my-auto it">COMP. INFORMATICHE</p>
           <p class="skills-section col-1 m-0 p-0 my-auto en">IT SKILLS</p>
           <div class="col-10 px-4 mt-2">
-            <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <!-- <div class="entry-bar p-1 my-1 it">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <div class="entry-bar p-1 my-1 en">Java, Android&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <br>
             <div class="entry-bar p-1 my-1 it">Python, Django&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -504,7 +517,27 @@
             </div>
             <div class="en it-skills-disclaimer">
               <span class="it-skills-wip-disclaimer">&nbsp;&nbsp;&nbsp;</span>&nbsp;To be acquired (first experience or tackled during the studies)
-            </div>
+            </div> -->
+						<p class="entry-title it">Analisi dati</p>
+						<p class="entry-title en">Data analysis</p>
+						<p class="entry-subtitle it">Python, pandas, numpy, GIS</p>
+						<p class="entry-subtitle en">Python, pandas, numpy, GIS</p>
+						<p class="entry-title it">ML e RL</p>
+						<p class="entry-title en">ML and RL</p>
+						<p class="entry-subtitle it">PyTorch, gymnasium, skrl</p>
+						<p class="entry-subtitle en">PyTorch, gymnasium, skrl</p>
+						<p class="entry-title it">Programmazione desktop e mobile</p>
+						<p class="entry-title en">Desktop & Mobile programming</p>
+						<p class="entry-subtitle it">Java, Android, Python, Django</p>
+						<p class="entry-subtitle en">Java, Android, Python, Django</p>
+						<p class="entry-title it">Programmazione web</p>
+						<p class="entry-title en">Web programming</p>
+						<p class="entry-subtitle it">PHP, Javascript, Typescript, Node, React</p>
+						<p class="entry-subtitle en">PHP, Javascript, Typescript, Node, React</p>
+						<p class="entry-title it">Programmazione HPC</p>
+						<p class="entry-title en">HPC programming</p>
+						<p class="entry-subtitle it">C, C++, OpenMP, MPI</p>
+						<p class="entry-subtitle en">C, C++, OpenMP, MPI</p>
           </div>
         </div>
         <div class="row p-0 mt-5" id="other-container">
